@@ -391,6 +391,22 @@
       setTimeout(function () { hero.classList.add("is-settled"); }, 2200);
     }
 
+    // The meander, crown and pleter trace themselves when the divider
+    // appears. dasharray/dashoffset inherit into the pleter's <use> copies.
+    $$(".divider .motif").forEach(function (svg) {
+      $$("path", svg).forEach(function (p) { p.setAttribute("pathLength", "1"); });
+      svg.classList.add("draw");
+    });
+
+    // A small secret: tapping the ampersand releases a burst of hearts.
+    var amp = $(".names .amp");
+    if (amp) {
+      amp.addEventListener("click", function () {
+        var r = amp.getBoundingClientRect();
+        spawnHearts(r.left + r.width / 2, r.top + r.height / 2);
+      });
+    }
+
     // A thin gold thread along the top showing how far down the page you are.
     var bar = document.createElement("div");
     bar.className = "progress";
@@ -406,6 +422,30 @@
         ticking = false;
       });
     }, { passive: true });
+  }
+
+  /* Hearts from the ampersand. */
+  function spawnHearts(cx, cy) {
+    if (reduceMotion) return;
+    var colours = ["#e0c684", "#f8f4ec", "#d98b80", "#c9a44c"];
+    for (var i = 0; i < 12; i++) {
+      var h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = "♥";
+      h.style.left = cx + "px";
+      h.style.top = cy + "px";
+      h.style.fontSize = (11 + Math.random() * 10).toFixed(0) + "px";
+      h.style.color = colours[i % colours.length];
+      h.style.setProperty("--hx", (Math.random() * 150 - 75).toFixed(0) + "px");
+      h.style.setProperty("--hy", (-40 - Math.random() * 85).toFixed(0) + "px");
+      h.style.setProperty("--hr", (Math.random() * 80 - 40).toFixed(0) + "deg");
+      h.style.setProperty("--hs", (0.9 + Math.random() * 0.7).toFixed(2));
+      h.style.animationDuration = (1.1 + Math.random() * 0.8).toFixed(2) + "s";
+      document.body.appendChild(h);
+      setTimeout(function (node) {
+        return function () { node.remove(); };
+      }(h), 2100);
+    }
   }
 
   /* Petals thrown across the screen when someone says yes. */

@@ -208,14 +208,17 @@ carries the full coat of arms: a 5 by 5 chequy starting on red, 13 red squares,
 under the crown of the five historic shields.
 
 **Animations**, all decorative: the hero arrives as a sequence, the City Hall
-and the three landmarks draw themselves stroke by stroke, gold sparkles drift
-in the header, the ampersand breathes, the invitation letter arrives word by
-word, section rules unroll, the photo floats, the countdown numbers pop as they
-change, cards lift and enter staggered, the divider motifs bob, a gold thread
-tracks scroll position, the language switch crossfades, the submit button
-pulses while sending, and petals fall when someone accepts. With
-`prefers-reduced-motion` (or without JavaScript) every one of them is skipped
-and the page is simply fully visible.
+draws itself stroke by stroke and then casts a shimmering reflection in
+Mälaren, faint northern lights drift across the hero sky, gold sparkles float,
+the ampersand breathes (and releases a burst of hearts if a guest taps it),
+the invitation letter arrives word by word, the polaroid develops from a soft
+blur into full colour as it appears, section rules unroll, the photo floats,
+the countdown numbers pop as they change, cards lift and enter staggered, the
+divider bands trace themselves in and bob, a gold thread tracks scroll
+position, the language switch crossfades, the submit button pulses while
+sending, and petals fall when someone accepts. With `prefers-reduced-motion`
+(or without JavaScript) every one of them is skipped and the page is simply
+fully visible.
 
 **Typography**: **Cardo** for the headings, names and letter, **Commissioner**
 for the small uppercase labels and the form. Both were picked because they
