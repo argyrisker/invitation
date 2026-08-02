@@ -2,7 +2,7 @@
  * RSVP receiver for the Argyrios & Tomislav invitation page.
  *
  * Setup (5 minutes):
- *  1. Create a Google Sheet — this is your guest database.
+ *  1. Create a Google Sheet. This is your guest database.
  *  2. In the Sheet: Extensions → Apps Script. Delete the placeholder code and
  *     paste this file.
  *  3. Deploy → New deployment → type "Web app".
@@ -15,7 +15,7 @@
  */
 
 var SHEET_NAME   = 'RSVP';
-var NOTIFY_EMAIL = '';   // e.g. 'argyker@gmail.com' — leave empty for no emails
+var NOTIFY_EMAIL = '';   // e.g. 'argyker@gmail.com', leave empty for no emails
 
 var COLUMNS = [
   ['submittedAt', 'Timestamp'],
@@ -86,7 +86,7 @@ function notify(data) {
 
   MailApp.sendEmail({
     to: NOTIFY_EMAIL,
-    subject: (coming ? '✓ ' : '✗ ') + 'RSVP — ' + name.trim(),
+    subject: (coming ? '✓ ' : '✗ ') + 'RSVP: ' + name.trim(),
     body: body
   });
 }

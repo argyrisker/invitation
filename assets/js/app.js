@@ -1,4 +1,4 @@
-/* Invitation page — language switching, countdown and RSVP submission. */
+/* Invitation page: language switching, countdown and RSVP submission. */
 (function () {
   "use strict";
 
@@ -21,7 +21,7 @@
     try {
       if (value === undefined) return localStorage.getItem(key);
       localStorage.setItem(key, value);
-    } catch (e) { /* private mode — ignore */ }
+    } catch (e) { /* private mode, ignore */ }
     return null;
   }
 
@@ -66,7 +66,7 @@
     if (contact) {
       contact.textContent = t("info.contact");
       contact.href = "mailto:" + (CFG.contactEmail || "") +
-        "?subject=" + encodeURIComponent("Argyrios & Tomislav — 10.04.2027");
+        "?subject=" + encodeURIComponent("Argyrios & Tomislav · 10.04.2027");
     }
 
     renderThanks();
@@ -125,7 +125,7 @@
     });
   });
 
-  /* Checked-state class — fallback for browsers without :has() */
+  /* Checked-state class: fallback for browsers without :has() */
   function syncChoices() {
     $$(".choice", form).forEach(function (label) {
       var input = label.querySelector("input");
@@ -206,7 +206,7 @@
       t("form.message") + ": " + (data.message || "-")
     ].join("\n");
     return "mailto:" + (CFG.contactEmail || "") +
-      "?subject=" + encodeURIComponent("RSVP — " + data.firstName + " " + data.lastName) +
+      "?subject=" + encodeURIComponent("RSVP: " + data.firstName + " " + data.lastName) +
       "&body=" + encodeURIComponent(body);
   }
 
@@ -221,7 +221,7 @@
     return fetch(CFG.appsScriptUrl, opts)
       .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); })
       .catch(function () {
-        // Some deployments block CORS reads — fire and forget instead.
+        // Some deployments block CORS reads, so fire and forget instead.
         return fetch(CFG.appsScriptUrl, Object.assign({ mode: "no-cors" }, opts));
       });
   }

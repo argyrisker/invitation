@@ -1,4 +1,4 @@
-/* Translations — Swedish, Greek, English, Croatian.
+/* Translations: Swedish, Greek, English, Croatian.
    Edit the text here; the page picks it up automatically.
    Keys must exist in all four languages. */
 
@@ -6,7 +6,7 @@ window.I18N = {
 
   /* ─────────────────────────── SVENSKA ─────────────────────────── */
   sv: {
-    "meta.title": "Argyrios & Tomislav — 10 april 2027",
+    "meta.title": "Argyrios & Tomislav · 10 april 2027",
     "html.lang": "sv",
     "nav.rsvp": "OSA",
 
@@ -15,16 +15,16 @@ window.I18N = {
     "hero.city": "Stockholm, Sverige",
 
     "invite.title": "Kära vänner och familj",
-    "invite.body": "Efter många år tillsammans säger vi äntligen ja till varandra — i Stockholms stadshus, mellan Mälarens vatten och de tre kronorna. Vi växte upp vid Egeiska havet och vid Adriatiska havet, och här i norr har vi hittat vårt gemensamma hem. Det skulle betyda allt för oss att få fira den här dagen tillsammans med er.",
+    "invite.body": "Efter många år tillsammans säger vi äntligen ja till varandra, i Stockholms stadshus, mellan Mälarens vatten och de tre kronorna. Den ene av oss växte upp i Serres i norra Grekland, den andre i Virovitica i Slavonien. Två inlandsstäder långt från varandra, och här uppe i norr har vi hittat vårt gemensamma hem. Det skulle betyda allt för oss att få fira den här dagen tillsammans med er.",
 
-    "invite.caption": "På väg uppåt — tillsammans.",
+    "invite.caption": "På väg uppåt, tillsammans.",
     "invite.photoAlt": "Illustration av Argyrios och Tomislav i en gondollift; den ene kysser den andres kind",
 
     "ceremony.tag": "Vigsel",
     "ceremony.title": "Borgerlig vigsel",
     "ceremony.venue": "Stockholms stadshus",
     "ceremony.address": "Hantverkargatan 1, Stockholm",
-    "ceremony.note": "På grund av det begränsade antalet platser i Stadshuset kan tyvärr endast den allra närmaste familjen närvara vid själva vigseln. Den här inbjudan gäller middagen efteråt — och där vill vi verkligen ha med er!",
+    "ceremony.note": "På grund av det begränsade antalet platser i Stadshuset kan tyvärr endast den allra närmaste familjen närvara vid själva vigseln. Den här inbjudan gäller middagen efteråt, och där vill vi verkligen ha med er!",
 
     "dinner.tag": "Fest",
     "dinner.title": "Middag och firande",
@@ -70,7 +70,7 @@ window.I18N = {
     "diet.shellfish": "Skaldjursallergi",
 
     "thanks.yesTitle": "Vad roligt!",
-    "thanks.yesBody": "Tack för ditt svar — vi ses den 10 april 2027. Vi hör av oss med alla detaljer i god tid.",
+    "thanks.yesBody": "Tack för ditt svar. Vi ses den 10 april 2027. Vi hör av oss med alla detaljer i god tid.",
     "thanks.noTitle": "Tack för ditt svar",
     "thanks.noBody": "Vi är ledsna att du inte kan komma, men vi tänker på dig den dagen.",
     "thanks.edit": "Ändra mitt svar",
@@ -81,12 +81,14 @@ window.I18N = {
     "info.giftsLabel": "Present",
     "info.gifts": "Din närvaro är den finaste present vi kan få. Vill du ändå ge något, bidra gärna till vår bröllopsresa.",
     "info.contactLabel": "Frågor",
-    "info.contact": "Hör av dig till oss"
+    "info.contact": "Hör av dig till oss",
+
+    "footer.route": "Serres · Virovitica · Stockholm"
   },
 
   /* ─────────────────────────── ΕΛΛΗΝΙΚΑ ─────────────────────────── */
   el: {
-    "meta.title": "Αργύριος & Tomislav — 10 Απριλίου 2027",
+    "meta.title": "Αργύριος & Tomislav · 10 Απριλίου 2027",
     "html.lang": "el",
     "nav.rsvp": "Απάντηση",
 
@@ -95,16 +97,16 @@ window.I18N = {
     "hero.city": "Στοκχόλμη, Σουηδία",
 
     "invite.title": "Αγαπημένοι μας φίλοι και συγγενείς",
-    "invite.body": "Μετά από τόσα χρόνια μαζί, λέμε επιτέλους το «ναι» — στο Δημαρχείο της Στοκχόλμης, ανάμεσα στα νερά της λίμνης Μέλαρεν και τα τρία χρυσά στέμματα. Μεγαλώσαμε ο ένας στο Αιγαίο και ο άλλος στην Αδριατική, και εδώ στον Βορρά βρήκαμε το κοινό μας σπίτι. Θα ήταν μεγάλη μας χαρά να γιορτάσουμε αυτή τη μέρα μαζί σας.",
+    "invite.body": "Μετά από τόσα χρόνια μαζί, λέμε επιτέλους το «ναι», στο Δημαρχείο της Στοκχόλμης, ανάμεσα στα νερά της λίμνης Μέλαρεν και τα τρία χρυσά στέμματα. Ο ένας μας μεγάλωσε στις Σέρρες, ο άλλος στη Βιροβίτιτσα της Σλαβονίας. Δύο πόλεις της ενδοχώρας, μακριά η μία από την άλλη, κι εδώ στον Βορρά βρήκαμε το κοινό μας σπίτι. Θα ήταν μεγάλη μας χαρά να γιορτάσουμε αυτή τη μέρα μαζί σας.",
 
-    "invite.caption": "Στον δρόμο για την κορυφή — μαζί.",
+    "invite.caption": "Στον δρόμο για την κορυφή, μαζί.",
     "invite.photoAlt": "Σκίτσο του Αργύριου και του Tomislav σε τελεφερίκ· ο ένας φιλά τον άλλον στο μάγουλο",
 
     "ceremony.tag": "Τελετή",
     "ceremony.title": "Πολιτικός γάμος",
     "ceremony.venue": "Δημαρχείο της Στοκχόλμης",
     "ceremony.address": "Hantverkargatan 1, Στοκχόλμη",
-    "ceremony.note": "Λόγω της περιορισμένης χωρητικότητας του Δημαρχείου, στην ίδια την τελετή μπορούν δυστυχώς να παρευρεθούν μόνο οι πιο στενοί συγγενείς. Η πρόσκληση αυτή αφορά το δείπνο που ακολουθεί — και εκεί σας θέλουμε οπωσδήποτε δίπλα μας!",
+    "ceremony.note": "Λόγω της περιορισμένης χωρητικότητας του Δημαρχείου, στην ίδια την τελετή μπορούν δυστυχώς να παρευρεθούν μόνο οι πιο στενοί συγγενείς. Η πρόσκληση αυτή αφορά το δείπνο που ακολουθεί, και εκεί σας θέλουμε οπωσδήποτε δίπλα μας!",
 
     "dinner.tag": "Γιορτή",
     "dinner.title": "Δείπνο και γλέντι",
@@ -150,7 +152,7 @@ window.I18N = {
     "diet.shellfish": "Αλλεργία σε οστρακοειδή",
 
     "thanks.yesTitle": "Τι χαρά!",
-    "thanks.yesBody": "Ευχαριστούμε για την απάντησή σας — τα λέμε στις 10 Απριλίου 2027. Θα σας στείλουμε όλες τις λεπτομέρειες έγκαιρα.",
+    "thanks.yesBody": "Ευχαριστούμε για την απάντησή σας. Τα λέμε στις 10 Απριλίου 2027. Θα σας στείλουμε όλες τις λεπτομέρειες έγκαιρα.",
     "thanks.noTitle": "Ευχαριστούμε για την απάντηση",
     "thanks.noBody": "Λυπόμαστε που δεν θα είστε μαζί μας, αλλά θα σας σκεφτόμαστε εκείνη τη μέρα.",
     "thanks.edit": "Αλλαγή απάντησης",
@@ -161,12 +163,14 @@ window.I18N = {
     "info.giftsLabel": "Δώρα",
     "info.gifts": "Η παρουσία σας είναι το καλύτερο δώρο. Αν θέλετε οπωσδήποτε κάτι άλλο, βοηθήστε μας στο ταξίδι του μέλιτος.",
     "info.contactLabel": "Ερωτήσεις",
-    "info.contact": "Επικοινωνήστε μαζί μας"
+    "info.contact": "Επικοινωνήστε μαζί μας",
+
+    "footer.route": "Σέρρες · Βιροβίτιτσα · Στοκχόλμη"
   },
 
   /* ─────────────────────────── ENGLISH ─────────────────────────── */
   en: {
-    "meta.title": "Argyrios & Tomislav — 10 April 2027",
+    "meta.title": "Argyrios & Tomislav · 10 April 2027",
     "html.lang": "en",
     "nav.rsvp": "RSVP",
 
@@ -175,16 +179,16 @@ window.I18N = {
     "hero.city": "Stockholm, Sweden",
 
     "invite.title": "Dear friends and family",
-    "invite.body": "After many years together we are finally saying yes to each other — at Stockholm City Hall, between the water of Lake Mälaren and the three golden crowns. One of us grew up by the Aegean, the other by the Adriatic, and here in the north we found our shared home. It would mean the world to us to celebrate this day with you.",
+    "invite.body": "After many years together we are finally saying yes to each other, at Stockholm City Hall, between the water of Lake Mälaren and the three golden crowns. One of us grew up in Serres in northern Greece, the other in Virovitica in Slavonia. Two inland towns far apart, and here in the north we have found our shared home. It would mean the world to us to celebrate this day with you.",
 
-    "invite.caption": "On our way up — together.",
+    "invite.caption": "On our way up, together.",
     "invite.photoAlt": "Illustration of Argyrios and Tomislav in a ski gondola; one kissing the other's cheek",
 
     "ceremony.tag": "Ceremony",
     "ceremony.title": "Civil ceremony",
     "ceremony.venue": "Stockholm City Hall",
     "ceremony.address": "Hantverkargatan 1, Stockholm",
-    "ceremony.note": "Because the number of seats inside the City Hall is strictly limited, only our very closest relatives can be present at the ceremony itself. This invitation is for the dinner afterwards — and that is where we truly want you with us!",
+    "ceremony.note": "Because the number of seats inside the City Hall is strictly limited, only our very closest relatives can be present at the ceremony itself. This invitation is for the dinner afterwards, and that is where we truly want you with us!",
 
     "dinner.tag": "Celebration",
     "dinner.title": "Dinner and celebration",
@@ -230,7 +234,7 @@ window.I18N = {
     "diet.shellfish": "Shellfish allergy",
 
     "thanks.yesTitle": "Wonderful!",
-    "thanks.yesBody": "Thank you for answering — see you on 10 April 2027. We will send all the details in good time.",
+    "thanks.yesBody": "Thank you for answering. See you on 10 April 2027. We will send all the details in good time.",
     "thanks.noTitle": "Thank you for letting us know",
     "thanks.noBody": "We are sorry you cannot be there, but we will be thinking of you on the day.",
     "thanks.edit": "Change my answer",
@@ -241,12 +245,14 @@ window.I18N = {
     "info.giftsLabel": "Gifts",
     "info.gifts": "Your presence is the greatest gift. If you would still like to give something, a contribution to our honeymoon is very welcome.",
     "info.contactLabel": "Questions",
-    "info.contact": "Write to us"
+    "info.contact": "Write to us",
+
+    "footer.route": "Serres · Virovitica · Stockholm"
   },
 
   /* ─────────────────────────── HRVATSKI ─────────────────────────── */
   hr: {
-    "meta.title": "Argyrios & Tomislav — 10. travnja 2027.",
+    "meta.title": "Argyrios & Tomislav · 10. travnja 2027.",
     "html.lang": "hr",
     "nav.rsvp": "Potvrda dolaska",
 
@@ -255,16 +261,16 @@ window.I18N = {
     "hero.city": "Stockholm, Švedska",
 
     "invite.title": "Dragi prijatelji i obitelji",
-    "invite.body": "Nakon mnogo zajedničkih godina napokon jedan drugome govorimo „da” — u stockholmskoj Gradskoj vijećnici, između voda jezera Mälaren i triju zlatnih kruna. Jedan je od nas odrastao uz Egejsko, drugi uz Jadransko more, a ovdje na sjeveru pronašli smo svoj zajednički dom. Bilo bi nam neizmjerno drago proslaviti ovaj dan s vama.",
+    "invite.body": "Nakon mnogo zajedničkih godina napokon jedan drugome govorimo „da”, u stockholmskoj Gradskoj vijećnici, između voda jezera Mälaren i triju zlatnih kruna. Jedan je od nas odrastao u Serresu u sjevernoj Grčkoj, drugi u Virovitici. Dva kontinentalna grada daleko jedan od drugoga, a ovdje na sjeveru pronašli smo svoj zajednički dom. Bilo bi nam neizmjerno drago proslaviti ovaj dan s vama.",
 
-    "invite.caption": "Na putu prema vrhu — zajedno.",
+    "invite.caption": "Na putu prema vrhu, zajedno.",
     "invite.photoAlt": "Ilustracija Argyriosa i Tomislava u žičari; jedan ljubi drugoga u obraz",
 
     "ceremony.tag": "Obred",
     "ceremony.title": "Građanski obred",
     "ceremony.venue": "Gradska vijećnica u Stockholmu",
     "ceremony.address": "Hantverkargatan 1, Stockholm",
-    "ceremony.note": "Budući da je broj mjesta u Gradskoj vijećnici strogo ograničen, samom obredu nažalost mogu prisustvovati samo najuža rodbina. Ovaj se poziv odnosi na večeru koja slijedi — i ondje vas doista želimo uz sebe!",
+    "ceremony.note": "Budući da je broj mjesta u Gradskoj vijećnici strogo ograničen, samom obredu nažalost mogu prisustvovati samo najuža rodbina. Ovaj se poziv odnosi na večeru koja slijedi, i ondje vas doista želimo uz sebe!",
 
     "dinner.tag": "Slavlje",
     "dinner.title": "Večera i slavlje",
@@ -310,7 +316,7 @@ window.I18N = {
     "diet.shellfish": "Alergija na školjke",
 
     "thanks.yesTitle": "Presretni smo!",
-    "thanks.yesBody": "Hvala na odgovoru — vidimo se 10. travnja 2027. Sve pojedinosti javljamo vam na vrijeme.",
+    "thanks.yesBody": "Hvala na odgovoru. Vidimo se 10. travnja 2027. Sve pojedinosti javljamo vam na vrijeme.",
     "thanks.noTitle": "Hvala što ste nam javili",
     "thanks.noBody": "Žao nam je što ne možete doći, ali mislit ćemo na vas toga dana.",
     "thanks.edit": "Promijeni odgovor",
@@ -321,6 +327,8 @@ window.I18N = {
     "info.giftsLabel": "Darovi",
     "info.gifts": "Vaša je prisutnost najljepši dar. Ako ipak želite nešto darovati, rado ćemo primiti prilog za naše svadbeno putovanje.",
     "info.contactLabel": "Pitanja",
-    "info.contact": "Javite nam se"
+    "info.contact": "Javite nam se",
+
+    "footer.route": "Serres · Virovitica · Stockholm"
   }
 };

@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────────────
-   Argyrios & Tomislav — Stockholm, 10 April 2027
+   Argyrios & Tomislav · Stockholm, 10 April 2027
    Palette: Stockholm City Hall brick + Nordic night blue, Greek Aegean blue,
    Croatian pleter red, and the gold of the three crowns.
    ───────────────────────────────────────────────────────────────────────── */
@@ -17,8 +17,11 @@
   --muted:       #6b7a8d;
   --line:        rgba(201, 164, 76, .38);
 
-  --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --sans:  "Jost", "Helvetica Neue", Arial, sans-serif;
+  /* Both families cover Latin, Latin Extended and Greek, so all four
+     languages share one voice. Fallbacks are chosen to keep the same
+     colour on screen while the webfonts load. */
+  --serif: "Cardo", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans:  "Commissioner", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
 
   --shadow: 0 18px 50px rgba(8, 23, 41, .12);
 }
@@ -198,7 +201,7 @@ a { color: inherit; }
   text-align: center;
 }
 
-/* entrance sequence — each element carries its own delay; `backwards`
+/* entrance sequence: each element carries its own delay; `backwards`
    keeps it invisible during the delay, and the final state is the
    element's normal style, so everything still shows without animation */
 @keyframes rise {
@@ -610,6 +613,14 @@ a { color: inherit; }
   height: auto;
   border-radius: 2px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+}
+/* the two towns we come from, and the one we are marrying in */
+.footer__route {
+  margin: 0 0 1.3rem;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(248, 244, 236, .58);
 }
 .footer__names {
   font-family: var(--serif);

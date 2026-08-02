@@ -1,13 +1,13 @@
-# Argyrios &amp; Tomislav — wedding invitation &amp; RSVP
+# Argyrios &amp; Tomislav · wedding invitation &amp; RSVP
 
 A single-page invitation in **Swedish, Greek, English and Croatian**, with an RSVP
 form whose answers land in a Google Sheet (or a Google Form).
 
-- Ceremony — Stockholm City Hall, Saturday 10 April 2027. The page states clearly
+- Ceremony: Stockholm City Hall, Saturday 10 April 2027. The page states clearly
   that only the very closest relatives fit inside the City Hall, and that the
   invitation is for the dinner afterwards.
-- Dinner — 18:00, venue to be announced.
-- RSVP deadline — 31 December 2026.
+- Dinner: 18:00, venue to be announced.
+- RSVP deadline: 31 December 2026.
 
 Nothing to build and no dependencies: plain HTML, CSS and JavaScript. Open
 `index.html` in a browser, or serve the folder with any static host.
@@ -20,11 +20,11 @@ Pick **one** of the two options and fill it into `assets/js/config.js`.
 Until one of them is configured, the form falls back to opening a pre-filled
 email to `contactEmail`, so the page is never a dead end.
 
-### Option A — Google Sheet via Apps Script (recommended)
+### Option A: Google Sheet via Apps Script (recommended)
 
 Gives you a real spreadsheet, one row per guest, and optional email alerts.
 
-1. Create a new Google Sheet — this is the guest database.
+1. Create a new Google Sheet. This is the guest database.
 2. **Extensions → Apps Script**, delete the sample code, paste all of
    [`google-apps-script/Code.gs`](google-apps-script/Code.gs).
 3. Optional: set `NOTIFY_EMAIL` at the top of that file to get a mail per answer.
@@ -37,18 +37,18 @@ Gives you a real spreadsheet, one row per guest, and optional email alerts.
 appsScriptUrl: "https://script.google.com/macros/s/AKfy..../exec",
 ```
 
-Open that URL in a browser once — it should print `{"ok":true,"service":"rsvp"}`.
+Open that URL in a browser once. It should print `{"ok":true,"service":"rsvp"}`.
 
 After editing the script later, redeploy with **Manage deployments → edit (pencil)
 → Version: New version → Deploy**, otherwise the old code keeps running.
 
-### Option B — plain Google Form
+### Option B: plain Google Form
 
 1. Create a Google Form with **seven short-answer / paragraph questions**, in
    any order: first name, surname, attending, diet, allergies, email, message.
    Use *short answer* (not multiple choice) so no value can be rejected.
 2. Open the live form → right-click → **View page source** → search for
-   `entry.` — each question has an id like `entry.123456789`. (Easier: open the
+   `entry.`. Each question has an id like `entry.123456789`. (Easier: open the
    form, press **⋮ → Get pre-filled link**, fill dummy values, copy the link and
    read the `entry.…` ids from it.)
 3. Copy the form id from the URL `…/forms/d/e/<FORM_ID>/viewform`.
@@ -95,16 +95,30 @@ Everything below lives in `assets/js/config.js` and `assets/js/i18n.js`.
 | Diet options | the checkbox list in `index.html` + `diet.*` keys in `i18n.js` |
 
 Language is chosen automatically from the browser, remembered in
-`localStorage`, and can be forced with `?lang=sv` (`el`, `en`, `hr`) — handy for
+`localStorage`, and can be forced with `?lang=sv` (`el`, `en`, `hr`), handy for
 sending the right link to each side of the family.
 
 ---
 
-## 3. Publishing
+## 3. Publishing on GitHub Pages
 
-**GitHub Pages** — push this branch, then *Settings → Pages → Deploy from a
-branch* and pick the branch with `/ (root)`. The site appears at
-`https://<user>.github.io/invitation/`.
+There is nothing to build, so either method works.
+
+**Simplest**: *Settings -> Pages -> Source: Deploy from a branch*, pick this
+branch and `/ (root)`. Done.
+
+**Or with the included workflow**: *Settings -> Pages -> Source: GitHub
+Actions*. `.github/workflows/pages.yml` then publishes on every push to `main`
+or to the wedding branch, and can also be run by hand from the Actions tab.
+
+Either way the site lands on `https://<user>.github.io/invitation/`. The empty
+`.nojekyll` file stops GitHub from running the files through Jekyll.
+
+One thing to update after the first deploy: the `og:` tags at the top of
+`index.html` carry the full site URL so that WhatsApp, Messenger and iMessage
+show a picture and a summary when the link is shared. They currently point at
+`https://argyrisker.github.io/invitation/`. If the site ends up somewhere else,
+change those two absolute URLs.
 
 Any other static host works the same way (Netlify, Vercel, Cloudflare Pages):
 drop the folder in, no build step.
@@ -115,16 +129,16 @@ drop the folder in, no build step.
 
 The three homes of this wedding are woven in rather than pasted on:
 
-- **Sweden** — Stockholm City Hall in line drawing with the *Tre Kronor* on the
+- **Sweden**: Stockholm City Hall in line drawing with the *Tre Kronor* on the
   spire, and the blue-and-gold of the city's own colours.
-- **Greece** — a meander (Greek key) band across the top of the invitation and
+- **Greece**: a meander (Greek key) band across the top of the invitation and
   in the divider, and the Aegean blue used for the ceremony card.
-- **Croatia** — the interlaced *pleter* motif in the divider, and the warm brick
+- **Croatia**: the interlaced *pleter* motif in the divider, and the warm brick
   red of the dinner card.
 
 Flags of all three countries sit in the footer, and an illustration of the
 couple (`assets/img/couple.webp`, JPEG fallback) hangs as a taped-up polaroid
-next to the invitation letter — its caption lives in `i18n.js`
+next to the invitation letter. Its caption lives in `i18n.js`
 (`invite.caption`) like all other text.
 
 **Animations**: the hero fades in as a sequence, the City Hall line drawing
@@ -133,6 +147,16 @@ countdown numbers pop as they change, cards lift on hover and enter staggered,
 the divider motifs bob, and the gold button gets a light sweep on hover. All of
 it is decorative only: with `prefers-reduced-motion` (or without JavaScript)
 every animation is skipped and the page is simply fully visible.
+
+**Typography**: **Cardo** for the headings, names and letter, **Commissioner**
+for the small uppercase labels and the form. Both were picked because they
+carry Latin, Latin Extended *and* Greek, so Swedish (å ä ö), Croatian
+(č ć ž š đ) and Greek all render in the same typeface. This was a real bug
+before: the previous pair (Cormorant Garamond and Jost) has no Greek at all, so
+every Greek guest silently got a system fallback font. EB Garamond and Alegreya
+do ship Greek, but draw it as a slanted, cursive design that would have made the
+Greek page look italic next to the other three. Cardo keeps all four upright and
+is Renaissance-classical, which suits an invitation.
 
 The layout is mobile-first, works without JavaScript for reading (only the
 form and the countdown need it), and the form is keyboard- and

@@ -3,16 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Argyrios &amp; Tomislav — 10.04.2027</title>
-<meta name="description" content="Argyrios &amp; Tomislav — Stockholm City Hall, 10 April 2027. RSVP.">
+<title>Argyrios &amp; Tomislav · 10.04.2027</title>
+<meta name="description" content="Argyrios &amp; Tomislav · Stockholm City Hall, 10 April 2027. RSVP.">
 <meta name="theme-color" content="#0f2440">
+
+<!-- Link preview when the invitation is shared in WhatsApp, Messenger, iMessage.
+     Change the two absolute URLs if the site lives somewhere other than
+     https://argyrisker.github.io/invitation/ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://argyrisker.github.io/invitation/">
+<meta property="og:title" content="Argyrios &amp; Tomislav · 10.04.2027">
+<meta property="og:description" content="Stockholm City Hall, Saturday 10 April 2027. Dinner at 18:00. Please RSVP by 31 December 2026.">
+<meta property="og:image" content="https://argyrisker.github.io/invitation/assets/img/couple.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Loaded non-blocking: the invitation renders instantly with system fonts even
      on a slow connection, then upgrades when the webfonts arrive. -->
+<!-- Cardo and Commissioner both ship Greek, Latin Extended and Cyrillic,
+     so Swedish (å ä ö), Croatian (č ć ž š đ) and Greek all render in the same
+     typeface instead of falling back to a system font. -->
 <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap"></noscript>
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Commissioner:wght@300;400;500&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Commissioner:wght@300;400;500&display=swap"></noscript>
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
 </head>
@@ -292,6 +305,7 @@
       </g>
     </svg>
   </div>
+  <p class="footer__route" data-i18n="footer.route"></p>
   <p class="footer__names">Argyrios &amp; Tomislav</p>
   <p class="footer__date">10 · 04 · 2027</p>
 </footer>
