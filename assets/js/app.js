@@ -231,9 +231,23 @@
       body: body
     };
     return fetch(CFG.appsScriptUrl, opts)
-      .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); })
-      .catch(function () {
-        // Some deployments block CORS reads, so fire and forget instead.
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.text();
+      })
+      .then(function (text) {
+        var payload = null;
+        try { payload = JSON.parse(text); } catch (e) { /* not JSON, assume stored */ }
+        if (payload && payload.ok === false) {
+          var refused = new Error(payload.error || "rejected");
+          refused.refused = true;
+          throw refused;
+        }
+      })
+      .catch(function (err) {
+        // A refusal from the script is final. Only a network or CORS problem
+        // is worth a second, unreadable attempt.
+        if (err && err.refused) throw err;
         return fetch(CFG.appsScriptUrl, Object.assign({ mode: "no-cors" }, opts));
       });
   }

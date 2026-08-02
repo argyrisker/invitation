@@ -22,25 +22,72 @@ email to `contactEmail`, so the page is never a dead end.
 
 ### Option A: Google Sheet via Apps Script (recommended)
 
-Gives you a real spreadsheet, one row per guest, and optional email alerts.
+Answers land in your own spreadsheet, one row per guest. Roughly five minutes,
+all of it in the browser. Nothing to install.
 
-1. Create a new Google Sheet. This is the guest database.
-2. **Extensions → Apps Script**, delete the sample code, paste all of
-   [`google-apps-script/Code.gs`](google-apps-script/Code.gs).
-3. Optional: set `NOTIFY_EMAIL` at the top of that file to get a mail per answer.
-4. **Deploy → New deployment → Web app**
-   - *Execute as*: **Me**
-   - *Who has access*: **Anyone**
-5. Copy the `…/exec` URL into `config.js`:
+**1. Make the Sheet.** Go to [sheets.new](https://sheets.new) and name it
+something like *Wedding RSVP*. That file is the database.
+
+**2. Paste the script.** In that Sheet: **Extensions → Apps Script**. Select the
+sample `function myFunction() {}` and delete it, then paste all of
+[`google-apps-script/Code.gs`](google-apps-script/Code.gs). Press the save icon.
+
+**3. Optional but recommended.** On line 26 of the pasted code set your address
+so every reply also arrives as an email:
+
+```js
+var NOTIFY_EMAIL = 'argyker@gmail.com';
+```
+
+**4. Publish it.** **Deploy → New deployment**, click the gear next to *Select
+type* and pick **Web app**, then set:
+
+| Field | Value |
+|---|---|
+| Description | anything, e.g. `rsvp` |
+| Execute as | **Me** |
+| Who has access | **Anyone** |
+
+Press **Deploy**. Google asks for permission the first time: **Authorize
+access** → choose your account → *Advanced* → *Go to (project name)* → **Allow**.
+The "unverified app" warning is expected, the app is your own script.
+
+> *Who has access* must be **Anyone**, not *Anyone with a Google account*.
+> Guests are not signed in when they RSVP.
+
+**5. Connect the page.** Copy the **Web app URL** (it ends in `/exec`) and paste
+it into [`assets/js/config.js`](assets/js/config.js):
 
 ```js
 appsScriptUrl: "https://script.google.com/macros/s/AKfy..../exec",
 ```
 
-Open that URL in a browser once. It should print `{"ok":true,"service":"rsvp"}`.
+Commit and push that one line, and the form is live.
 
-After editing the script later, redeploy with **Manage deployments → edit (pencil)
-→ Version: New version → Deploy**, otherwise the old code keeps running.
+**6. Check it.** Open the `/exec` URL in a browser. It should print something
+like `{"ok":true,"service":"rsvp","sheet":"RSVP","replies":0}`. Then send
+yourself a test RSVP from the invitation and delete that row from the Sheet.
+
+#### What the Sheet looks like
+
+Two tabs are created on the first reply:
+
+- **RSVP** — first reply, last update, first name, surname, attending, diet,
+  allergies/notes, email, message, language.
+- **Summary** — live counts: replies, coming, not coming, and how many need
+  each diet. Useful for the caterer; the numbers update by themselves.
+
+One row per email address. If a guest presses *Change my answer* and sends a
+new reply, their existing row is updated rather than a second one added, and
+*Last update* shows when. Answers are always stored in English (`Yes`, `No`,
+`Vegan`, `Gluten-free`) whatever language the guest used, so the columns stay
+sortable; the language they read the invitation in gets its own column.
+
+#### If you edit the script later
+
+Redeploy with **Manage deployments → edit (pencil) → Version: New version →
+Deploy**. Keep the same deployment so the URL does not change, otherwise the
+old code keeps running.
 
 ### Option B: plain Google Form
 
