@@ -365,11 +365,15 @@ a { color: inherit; }
   color: var(--gold);
   background: var(--cream);
 }
-.divider .motif { width: clamp(64px, 16vw, 104px); height: auto; opacity: .8; }
+.divider .motif { height: auto; opacity: .85; }
+/* the meander and the pleter flank the crown as full bands: they share the
+   leftover width between them, so on a phone they stay generous instead of
+   shrinking into icons */
+.divider .motif--band { flex: 1 1 0; min-width: 0; max-width: 300px; }
+.divider .motif--big { width: clamp(38px, 9vw, 50px); flex: none; opacity: 1; }
 /* the casing is painted in the background colour, so the ribbon beneath it
-   disappears exactly where the other ribbon crosses over */
+   disappears exactly where another ribbon crosses over */
 .pleter-casing { stroke: var(--cream); }
-.divider .motif--big { width: clamp(34px, 8vw, 48px); opacity: 1; }
 /* the three motifs bob gently, slightly out of phase */
 .divider.is-visible .motif { animation: bob 5s ease-in-out infinite; }
 .divider.is-visible .motif--big { animation-delay: .8s; }
