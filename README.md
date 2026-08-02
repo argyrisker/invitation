@@ -149,17 +149,22 @@ sending the right link to each side of the family.
 
 ## 3. Publishing on GitHub Pages
 
-There is nothing to build, so either method works.
+There is nothing to build, so this is three clicks and no workflow:
 
-**Simplest**: *Settings -> Pages -> Source: Deploy from a branch*, pick this
-branch and `/ (root)`. Done.
+1. The repository has to be **public** (Pages on a private repository needs a
+   paid plan): *Settings -> General -> Danger Zone -> Change visibility*.
+2. *Settings -> Pages -> Source:* **Deploy from a branch**.
+3. Branch: **`claude/wedding-invitation-webpage-5a39de`**, folder **`/ (root)`**,
+   then **Save**.
 
-**Or with the included workflow**: *Settings -> Pages -> Source: GitHub
-Actions*. `.github/workflows/pages.yml` then publishes on every push to `main`
-or to the wedding branch, and can also be run by hand from the Actions tab.
-
-Either way the site lands on `https://<user>.github.io/invitation/`. The empty
+The site appears at `https://<user>.github.io/invitation/` a minute or two
+later, and republishes by itself on every push to that branch. The empty
 `.nojekyll` file stops GitHub from running the files through Jekyll.
+
+> Turning Pages on has to be done by hand, once. A GitHub Actions workflow
+> cannot do it for you: the workflow token may publish to Pages but not create
+> the Pages site, and the API answers `Resource not accessible by integration`.
+> That is why there is no deploy workflow in this repository.
 
 One thing to update after the first deploy: the `og:` tags at the top of
 `index.html` carry the full site URL so that WhatsApp, Messenger and iMessage
