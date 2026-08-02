@@ -93,7 +93,18 @@ a { color: inherit; }
 .center { text-align: center; }
 
 .section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
-.section--tinted { background: var(--cream-warm); }
+.section--tinted {
+  background:
+    radial-gradient(120% 90% at 50% 0%, #f7efdd 0%, var(--cream-warm) 62%);
+  overflow: hidden; /* the cards slide in from the sides */
+}
+/* the tinted, dark and footer bands overlap what came before them with
+   softly rounded shoulders, so the page reads as sheets laid on a table */
+.section--tinted, .section--dark {
+  position: relative;
+  border-radius: clamp(26px, 6vw, 58px);
+  margin-top: calc(clamp(26px, 6vw, 58px) * -.55);
+}
 .section--dark {
   background:
     radial-gradient(120% 90% at 50% 0%, #143154 0%, var(--navy) 45%, var(--navy-deep) 100%);
@@ -181,10 +192,13 @@ a { color: inherit; }
   color: #4a5a70;
 }
 
+/* geometry-only sprite for the braid; never rendered directly */
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
 /* ── hero ──────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  padding: clamp(2.5rem, 7vw, 5rem) 1rem clamp(3rem, 7vw, 5rem);
+  padding: clamp(2.5rem, 7vw, 5rem) 1rem calc(clamp(2.2rem, 6vw, 3.6rem) + 76px);
   /* three faint aurora veils drifting over the night-blue sky */
   background:
     radial-gradient(58% 40% at 20% 10%, rgba(72, 210, 174, .10), transparent 70%),
@@ -211,6 +225,26 @@ a { color: inherit; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='14' viewBox='0 0 42 14'%3E%3Cpath fill='none' stroke='%23c9a44c' stroke-width='1.2' d='M1 13V3h10v6H6V6h3M15 13V3h10v6h-5V6h3M29 13V3h10v6h-5V6h3'/%3E%3C/svg%3E");
   opacity: .5;
 }
+/* the pleter closes the hero along its bottom edge, answering the Greek
+   key band along the top. It sits on a solid strip so the braid's casings
+   match their background exactly. */
+.hero__band {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 14px;
+  background: var(--navy-deep);
+  animation: fadeIn 1.4s ease 1.6s backwards;
+}
+.hero__braid {
+  width: min(300px, 72%);
+  height: auto;
+  color: var(--gold);
+  opacity: .8;
+}
+.hero__band .pleter-casing { stroke: var(--navy-deep); }
+
 .hero__frame {
   width: min(760px, 100%);
   margin: 0 auto;
@@ -442,9 +476,35 @@ a { color: inherit; }
 /* cards enter one after the other when their section reveals; a one-shot
    animation, so the hover transition above is untouched afterwards */
 .section.reveal .card { opacity: 0; }
-.section.reveal.is-visible .card { opacity: 1; animation: rise .7s ease backwards; }
-.section.reveal.is-visible .card:nth-child(2) { animation-delay: .18s; }
+.section.reveal.is-visible .card:first-child {
+  opacity: 1;
+  animation: cardInL .85s cubic-bezier(.22, 1, .36, 1) backwards;
+}
+.section.reveal.is-visible .card:nth-child(2) {
+  opacity: 1;
+  animation: cardInR .85s cubic-bezier(.22, 1, .36, 1) .16s backwards;
+}
+@keyframes cardInL {
+  from { opacity: 0; transform: translateX(-44px) rotate(-2.4deg); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes cardInR {
+  from { opacity: 0; transform: translateX(44px) rotate(2.4deg); }
+  to   { opacity: 1; transform: none; }
+}
 .card--accent { border-top-color: var(--brick); }
+
+.card__icon {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.5rem;
+  width: 46px;
+  height: auto;
+  color: var(--gold);
+  opacity: .5;
+  transition: opacity .35s, transform .35s;
+}
+.card:hover .card__icon { opacity: .95; transform: rotate(-4deg) scale(1.06); }
 
 .card__tag {
   display: inline-block;
@@ -692,6 +752,9 @@ a { color: inherit; }
 
 /* ── footer ────────────────────────────────────────────────────────────── */
 .footer {
+  position: relative;
+  border-radius: clamp(26px, 6vw, 58px) clamp(26px, 6vw, 58px) 0 0;
+  margin-top: calc(clamp(26px, 6vw, 58px) * -.55);
   padding: 2.8rem 1rem 3.2rem;
   text-align: center;
   background: var(--navy-deep);
@@ -832,7 +895,7 @@ a { color: inherit; }
 /* ── print (some guests will want it on paper) ─────────────────────────── */
 @media print {
   .langbar, .countdown, .form, .thanks, .btn, .sparkle,
-  .petal, .progress, .heart, .cityhall-mirror { display: none !important; }
+  .petal, .progress, .heart, .cityhall-mirror, .hero__band { display: none !important; }
   .lede .w { opacity: 1 !important; transform: none !important; }
   .reveal .photo img { filter: none !important; }
   .motif.draw path, .motif.draw use { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
@@ -848,6 +911,7 @@ a { color: inherit; }
   .eyebrow, .hero__meta, .footer__date, .deadline { color: #555 !important; }
   .cityhall, .divider, .thanks__mark { color: #777 !important; }
   .section { padding: 1.2rem 0; break-inside: avoid; }
+  .section--tinted, .section--dark, .footer { border-radius: 0; margin-top: 0; }
   .card { box-shadow: none; border: 1px solid #ccc; }
   .section--dark .section__title { color: #000; }
 }

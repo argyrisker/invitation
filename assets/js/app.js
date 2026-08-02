@@ -393,6 +393,9 @@
 
     // The meander, crown and pleter trace themselves when the divider
     // appears. dasharray/dashoffset inherit into the pleter's <use> copies.
+    // The braid's real paths live in the shared sprite, so normalize those
+    // too; the hero band reuses them but has no dash rules, so it is safe.
+    $$(".svg-defs path").forEach(function (p) { p.setAttribute("pathLength", "1"); });
     $$(".divider .motif").forEach(function (svg) {
       $$("path", svg).forEach(function (p) { p.setAttribute("pathLength", "1"); });
       svg.classList.add("draw");
