@@ -146,9 +146,14 @@
 
   function fieldOf(input) { return input.closest(".field"); }
 
-  function markInvalid(input, invalid) {
+  /* `reason` picks which message the field shows: "empty" or "invalid". */
+  function markInvalid(input, invalid, reason) {
     var f = fieldOf(input);
-    if (f) f.classList.toggle("is-invalid", !!invalid);
+    if (f) {
+      f.classList.toggle("is-invalid", !!invalid);
+      f.classList.toggle("err-empty", invalid && reason === "empty");
+      f.classList.toggle("err-invalid", invalid && reason === "invalid");
+    }
     input.setAttribute("aria-invalid", invalid ? "true" : "false");
   }
 
@@ -157,7 +162,7 @@
     ["firstName", "lastName"].forEach(function (name) {
       var input = form.elements[name];
       var bad = !input.value.trim();
-      markInvalid(input, bad);
+      markInvalid(input, bad, "empty");
       if (bad) ok = false;
     });
 
@@ -167,9 +172,16 @@
     if (!attending) ok = false;
 
     var email = form.elements.email;
-    var badMail = email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
-    markInvalid(email, badMail);
-    if (badMail) ok = false;
+    var mail = email.value.trim();
+    if (!mail) {
+      markInvalid(email, true, "empty");
+      ok = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
+      markInvalid(email, true, "invalid");
+      ok = false;
+    } else {
+      markInvalid(email, false);
+    }
 
     if (!ok) {
       var first = form.querySelector(".is-invalid input, .is-invalid textarea");

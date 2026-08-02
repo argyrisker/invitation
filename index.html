@@ -229,12 +229,10 @@
         </div>
 
         <label class="field">
-          <span class="field__label">
-            <span data-i18n="form.email"></span>
-            <small data-i18n="form.optional"></small>
-          </span>
-          <input type="email" name="email" autocomplete="email">
-          <em class="field__error" data-i18n="form.emailInvalid"></em>
+          <span class="field__label" data-i18n="form.email"></span>
+          <input type="email" name="email" autocomplete="email" required>
+          <em class="field__error" data-err="empty" data-i18n="form.required"></em>
+          <em class="field__error" data-err="invalid" data-i18n="form.emailInvalid"></em>
         </label>
 
         <label class="field">

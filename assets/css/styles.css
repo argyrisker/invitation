@@ -524,6 +524,11 @@ a { color: inherit; }
 .field.is-invalid input,
 .field.is-invalid textarea { border-color: #d98b80; }
 
+/* fields that can fail two ways show only the matching message */
+.field.is-invalid [data-err] { display: none; }
+.field.is-invalid.err-empty   [data-err="empty"]   { display: block; }
+.field.is-invalid.err-invalid [data-err="invalid"] { display: block; }
+
 .choices { display: flex; flex-wrap: wrap; gap: .6rem; }
 .choices--wrap { gap: .5rem; }
 
