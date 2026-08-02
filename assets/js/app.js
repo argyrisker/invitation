@@ -429,6 +429,24 @@
        handler: the thread that stitches the page together, and the braid
        that weaves itself as the divider goes by. */
     var threadPath = $(".thread path");
+    var threadClipRect = document.getElementById("threadRect");
+    var threadLen = 0, threadBox = null, threadTip = null;
+    if (threadPath && threadPath.getTotalLength) {
+      try { threadLen = threadPath.getTotalLength(); } catch (e) { threadPath = null; }
+    }
+    if (threadPath && threadLen) {
+      threadTip = document.createElement("span");
+      threadTip.className = "thread-tip";
+      document.body.appendChild(threadTip);
+      measureThread();
+      window.addEventListener("resize", measureThread, { passive: true });
+    }
+    function measureThread() {
+      var el = $(".thread");
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      threadBox = { left: r.left + window.scrollX, width: r.width };
+    }
     var weaveRect = document.getElementById("weaveRect");
     var divider = $(".divider");
     var meanderPath = $(".divider .motif--band:not(.motif--weave) path");
@@ -441,15 +459,23 @@
       requestAnimationFrame(function () {
         var view = window.innerHeight;
 
-        if (threadPath) {
-          /* The drawn tip tracks the fold rather than the scroll ratio, so
-             the thread always reaches the part of the page being read. The
-             ratio version ran ahead near the top and lagged near the end,
-             because the two measure different things: scrollY / (height -
-             viewport) hits 1 while the tip still has a screenful to go. */
+        if (threadPath && threadClipRect) {
+          /* The tip used to sit at the very bottom edge of the screen, so
+             the drawing always happened out of sight and the line read as
+             static, out of step with the scroll. It now rides two thirds
+             of the way down the screen, where you can watch it draw, and a
+             small glowing bead marks it. The reveal is a clip rectangle,
+             the same technique as the braid: dashes proved unreliable
+             together with non-scaling-stroke. */
           var doc = document.documentElement.scrollHeight;
-          var tip = doc > 0 ? (window.scrollY + view * 0.92) / doc : 0;
-          threadPath.style.strokeDashoffset = String(1 - clamp01(tip));
+          var frac = doc > 0 ? clamp01((window.scrollY + view * 0.66) / doc) : 0;
+          threadClipRect.setAttribute("height", (frac * 1000).toFixed(2));
+          if (threadTip && threadBox) {
+            var pt = threadPath.getPointAtLength(threadLen * frac);
+            threadTip.style.transform = "translate(" +
+              (threadBox.left + pt.x / 40 * threadBox.width).toFixed(1) + "px," +
+              (frac * doc).toFixed(1) + "px)";
+          }
         }
 
         if (divider) {

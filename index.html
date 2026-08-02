@@ -37,14 +37,19 @@
      for the tap, and clears up afterwards. Keeping it here rather than in
      app.js means the envelope cannot outlive a script that failed to load. -->
 <div class="envelope" id="envelope" role="button" tabindex="0" hidden>
+  <!-- layer order, back to front: back of the envelope, the card inside it,
+       the front folds that hide the card's lower half, the flap, the seal.
+       The card really is between the envelope's two faces, so it slides out
+       of the pocket instead of appearing in front of it. -->
   <div class="envelope__stage">
-    <div class="envelope__card">
-      <p class="envelope__names">Argyrios &amp; Tomislav</p>
-      <p class="envelope__date">10 &middot; 04 &middot; 2027</p>
-    </div>
     <div class="envelope__body">
+      <div class="envelope__back"></div>
+      <div class="envelope__card">
+        <p class="envelope__names">Argyrios &amp; Tomislav</p>
+        <p class="envelope__date">10 &middot; 04 &middot; 2027</p>
+      </div>
+      <div class="envelope__front"></div>
       <div class="envelope__flap"></div>
-      <div class="envelope__pocket"></div>
       <div class="envelope__seal"><span>A&nbsp;&amp;&nbsp;T</span></div>
     </div>
   </div>
@@ -87,9 +92,10 @@
 <!-- the thread that runs through the whole invitation, drawn as you scroll.
      It keeps to the margin, so it never crosses the text. -->
 <svg class="thread" viewBox="0 0 40 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <defs><clipPath id="threadClip"><rect id="threadRect" x="0" y="0" width="40" height="0"/></clipPath></defs>
   <path d="M20 0 Q34 25 20 50T20 100T20 150T20 200T20 250T20 300T20 350T20 400T20 450T20 500T20 550T20 600T20 650T20 700T20 750T20 800T20 850T20 900T20 950T20 1000"
         fill="none" stroke="currentColor" stroke-width="1.2"
-        vector-effect="non-scaling-stroke" pathLength="1"/>
+        vector-effect="non-scaling-stroke" clip-path="url(#threadClip)"/>
 </svg>
 
 
