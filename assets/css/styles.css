@@ -816,7 +816,7 @@ a { color: inherit; }
   perspective: 1100px;
   /* the last step of the sequence: get out of the way. `forwards` keeps it
      gone even if the script never runs. */
-  animation: envGone .65s ease 2.35s forwards;
+  cursor: pointer;
 }
 .envelope__stage {
   position: relative;
@@ -858,7 +858,6 @@ a { color: inherit; }
   /* the shadow follows the clipped triangle, so the fold gets a gold edge */
   filter: drop-shadow(0 1px 0 rgba(201, 164, 76, .5));
   backface-visibility: hidden;
-  animation: envFlap .75s cubic-bezier(.6, 0, .3, 1) .6s forwards;
 }
 
 .envelope__seal {
@@ -878,7 +877,6 @@ a { color: inherit; }
   font-family: var(--serif);
   font-size: .82rem;
   letter-spacing: .06em;
-  animation: envSeal .5s ease .35s forwards;
 }
 
 .envelope__card {
@@ -896,7 +894,6 @@ a { color: inherit; }
   z-index: 2;
   transform: translateY(-30%) scale(.96);
   opacity: 0;
-  animation: envCard .9s cubic-bezier(.22, 1, .36, 1) .95s forwards;
 }
 .envelope__names { font-family: var(--serif); font-size: 1.5rem; margin: 0 0 .25rem; }
 .envelope__date {
@@ -905,6 +902,37 @@ a { color: inherit; }
   letter-spacing: .28em;
   color: var(--muted);
 }
+
+
+/* Sealed and waiting: the seal breathes so the tap is invited. */
+.envelope:not(.is-opening) .envelope__seal { animation: sealPulse 2.6s ease-in-out infinite; }
+.envelope__hint {
+  position: absolute;
+  bottom: clamp(2.4rem, 12vh, 6rem);
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0;
+  font-size: .74rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: rgba(224, 198, 132, .75);
+  animation: hintIn 1s ease 1.1s backwards, hintPulse 2.6s ease-in-out 2.1s infinite;
+}
+.envelope.is-opening .envelope__hint { animation: envGone .4s ease forwards; }
+
+/* Tapped: the whole sequence, a little slower than it used to be. */
+.envelope.is-opening { animation: envGone .9s ease 2.75s forwards; }
+.envelope.is-opening .envelope__seal { animation: envSeal .75s ease .05s forwards; }
+.envelope.is-opening .envelope__flap { animation: envFlap 1.2s cubic-bezier(.6, 0, .3, 1) .45s forwards; }
+.envelope.is-opening .envelope__card { animation: envCard 1.3s cubic-bezier(.22, 1, .36, 1) 1.25s forwards; }
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(0, 0, 0, .45), inset 0 0 0 2px rgba(224, 198, 132, .35); }
+  50%      { transform: scale(1.06); box-shadow: 0 6px 22px rgba(0, 0, 0, .5), inset 0 0 0 2px rgba(224, 198, 132, .7); }
+}
+@keyframes hintIn { from { opacity: 0; transform: translateY(8px); } }
+@keyframes hintPulse { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
 
 @keyframes envSeal {
   to { transform: scale(1.5) rotate(14deg); opacity: 0; }
@@ -963,15 +991,10 @@ a { color: inherit; }
 /* ── the divider bands trace themselves in ─────────────────────────────── */
 /* stroke-dasharray and -offset inherit, so setting them on the <use>
    elements reaches the pleter's shadow-tree copies too */
-.divider .motif.draw path,
-.divider .motif.draw use { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
-/* the pleter is clipped open by scroll instead, see .motif--weave */
+/* the meander and the crown are traced by scroll position, the pleter is
+   opened by its clip; JavaScript sets the offsets from one handler */
+.divider .motif.scroll path { stroke-dasharray: 1 1; }
 .divider .motif--weave use { stroke-dasharray: none; stroke-dashoffset: 0; }
-.divider.is-visible .motif.draw path,
-.divider.is-visible .motif.draw use { animation: drawLine 1.9s ease-out forwards; }
-.divider.is-visible .motif--big.draw path { animation-delay: .4s; }
-.divider.is-visible .motif.draw:last-child path,
-.divider.is-visible .motif.draw:last-child use { animation-delay: .55s; }
 
 /* ── hearts from the ampersand ─────────────────────────────────────────── */
 .heart {
@@ -1032,7 +1055,7 @@ a { color: inherit; }
   .thread, .envelope { display: none !important; }
   .lede .w { opacity: 1 !important; transform: none !important; }
   .reveal .photo img { filter: none !important; }
-  .motif.draw path, .motif.draw use { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+  .motif.scroll path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
   .reveal, .reveal .card { opacity: 1 !important; transform: none !important; }
   .photo { transform: none; box-shadow: none; border: 1px solid #ccc; }
   body { background: #fff; color: #000; font-size: 12pt; }

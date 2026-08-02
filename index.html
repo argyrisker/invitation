@@ -31,11 +31,12 @@
 </head>
 <body>
 <!-- ── the invitation arrives sealed, on a guest's first visit ──────────
-     The whole sequence is CSS, so it finishes and gets out of the way even
-     if the JavaScript never loads. The inline script below decides whether
-     to show it at all, while the page is still being parsed, so there is no
-     flash of the invitation before the envelope covers it. -->
-<div class="envelope" id="envelope" hidden>
+     It waits for a tap. Everything lives in the inline script below, which
+     runs while the page is still parsing: it decides whether to show the
+     envelope at all (so there is no flash of the invitation first), listens
+     for the tap, and clears up afterwards. Keeping it here rather than in
+     app.js means the envelope cannot outlive a script that failed to load. -->
+<div class="envelope" id="envelope" role="button" tabindex="0" hidden>
   <div class="envelope__stage">
     <div class="envelope__card">
       <p class="envelope__names">Argyrios &amp; Tomislav</p>
@@ -47,20 +48,39 @@
       <div class="envelope__seal"><span>A&nbsp;&amp;&nbsp;T</span></div>
     </div>
   </div>
+  <p class="envelope__hint" data-i18n="envelope.hint">Tap to open</p>
 </div>
 <script>
 (function () {
   try {
     if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (localStorage.getItem("rsvp.opened")) return;
-    document.documentElement.className += " is-sealed";
-    document.getElementById("envelope").hidden = false;
-    // belt and braces: unlock scrolling even if app.js never loads
+  } catch (e) { return; }
+
+  var env = document.getElementById("envelope");
+  var root = document.documentElement;
+  root.className += " is-sealed";
+  env.hidden = false;
+
+  var opened = false;
+  function open() {
+    if (opened) return;
+    opened = true;
+    try { localStorage.setItem("rsvp.opened", "1"); } catch (e) {}
+    env.className += " is-opening";
+    // once the CSS sequence has played out, unlock the page and clear up
     setTimeout(function () {
-      var d = document.documentElement;
-      d.className = d.className.replace(/\bis-sealed\b/, "");
-    }, 3500);
-  } catch (e) { /* private mode: just show the invitation */ }
+      root.className = root.className.replace(/\bis-sealed\b/, "");
+      if (env.parentNode) env.parentNode.removeChild(env);
+    }, 3900);
+  }
+
+  env.addEventListener("click", open);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Escape") open();
+  });
+  // nobody should be stuck looking at an envelope they did not think to tap
+  setTimeout(open, 12000);
 })();
 </script>
 

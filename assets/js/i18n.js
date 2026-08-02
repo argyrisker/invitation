@@ -85,7 +85,9 @@ window.I18N = {
 
     "cities.serres": "Serres",
     "cities.virovitica": "Virovitica",
-    "cities.stockholm": "Stockholm"
+    "cities.stockholm": "Stockholm",
+
+    "envelope.hint": "Tryck för att öppna"
 
   },
 
@@ -170,7 +172,9 @@ window.I18N = {
 
     "cities.serres": "Σέρρες",
     "cities.virovitica": "Βιροβίτιτσα",
-    "cities.stockholm": "Στοκχόλμη"
+    "cities.stockholm": "Στοκχόλμη",
+
+    "envelope.hint": "Πατήστε για να ανοίξετε"
 
   },
 
@@ -255,7 +259,9 @@ window.I18N = {
 
     "cities.serres": "Serres",
     "cities.virovitica": "Virovitica",
-    "cities.stockholm": "Stockholm"
+    "cities.stockholm": "Stockholm",
+
+    "envelope.hint": "Tap to open"
 
   },
 
@@ -340,7 +346,9 @@ window.I18N = {
 
     "cities.serres": "Serres",
     "cities.virovitica": "Virovitica",
-    "cities.stockholm": "Stockholm"
+    "cities.stockholm": "Stockholm",
+
+    "envelope.hint": "Dodirnite za otvaranje"
 
   }
 };

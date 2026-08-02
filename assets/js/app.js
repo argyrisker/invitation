@@ -413,8 +413,7 @@
     $$(".svg-defs path").forEach(function (p) { p.setAttribute("pathLength", "1"); });
     $$(".divider .motif").forEach(function (svg) {
       $$("path", svg).forEach(function (p) { p.setAttribute("pathLength", "1"); });
-      // the pleter is opened by the scroll-driven clip instead
-      if (!svg.classList.contains("motif--weave")) svg.classList.add("draw");
+      svg.classList.add("scroll");
     });
 
     // A small secret: tapping the ampersand releases a burst of hearts.
@@ -432,6 +431,8 @@
     var threadPath = $(".thread path");
     var weaveRect = document.getElementById("weaveRect");
     var divider = $(".divider");
+    var meanderPath = $(".divider .motif--band:not(.motif--weave) path");
+    var crownPath = $(".divider .motif--big path");
     var ticking = false;
 
     function onScroll() {
@@ -447,42 +448,32 @@
           threadPath.style.strokeDashoffset = String(1 - Math.min(1, p * 1.08));
         }
 
-        if (weaveRect && divider) {
-          // weave from the moment the divider appears until it is well up
+        if (divider) {
+          /* One progress value for the whole divider, split into three
+             overlapping stretches so the band builds left to right:
+             the meander first, then the crown, then the pleter. */
           var box = divider.getBoundingClientRect();
-          var w = (view * 0.9 - box.top) / (view * 0.55);
-          weaveRect.setAttribute("width", (168 * clamp01(w)).toFixed(1));
+          var d = clamp01((view * 0.92 - box.top) / (view * 0.62));
+          if (meanderPath) meanderPath.style.strokeDashoffset = String(1 - stretch(d, 0, .45));
+          if (crownPath)   crownPath.style.strokeDashoffset   = String(1 - stretch(d, .32, .7));
+          if (weaveRect)   weaveRect.setAttribute("width", (168 * stretch(d, .5, 1)).toFixed(1));
         }
         ticking = false;
       });
     }
 
     function clamp01(n) { return n < 0 ? 0 : n > 1 ? 1 : n; }
+    /* how far through the [a, b] stretch of the overall progress we are */
+    function stretch(n, a, b) { return clamp01((n - a) / (b - a)); }
 
     if (weaveRect) weaveRect.setAttribute("width", "0");
+    if (meanderPath) meanderPath.style.strokeDashoffset = "1";
+    if (crownPath) crownPath.style.strokeDashoffset = "1";
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     onScroll();
   }
 
-  /* The envelope: CSS runs the whole sequence, so this only remembers that
-     the guest has seen it and lets them skip it. */
-  (function envelope() {
-    var box = $("#envelope");
-    if (!box || box.hidden) return;
-    try { localStorage.setItem("rsvp.opened", "1"); } catch (e) {}
-
-    function open() {
-      document.documentElement.classList.remove("is-sealed");
-      box.remove();
-    }
-    box.addEventListener("click", open);
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" || e.key === "Enter") open();
-    });
-    // the CSS fade ends at 3.0s; clear it from the page just after
-    setTimeout(open, 3200);
-  })();
 
   /* Hearts from the ampersand. */
   function spawnHearts(cx, cy) {

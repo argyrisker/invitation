@@ -226,10 +226,11 @@ along the bottom of the hero as a repeating tile; the tinted, dark and footer ba
 section above them with softly rounded shoulders; and the two programme cards
 slide in from either side, wearing small gold icons: rings for the ceremony, a
 toast for the dinner. On a guest's first visit the invitation arrives sealed
-in an envelope: the wax seal breaks, the flap opens and the card rises out. A
-gold thread runs down the margin of the whole page, drawing itself as you
-scroll, and the pleter braid in the divider weaves itself strand over strand as
-it passes. With `prefers-reduced-motion`
+in an envelope and waits to be tapped: the wax seal breaks, the flap opens and
+the card rises out, about three and a half seconds in all. A gold thread runs
+down the margin of the whole page, drawing itself as you scroll, and the
+divider builds with scroll position: the meander is traced first, then the
+crown, then the pleter braid weaves itself strand over strand. With `prefers-reduced-motion`
 (or without JavaScript) every one of them is skipped and the page is simply
 fully visible.
 
