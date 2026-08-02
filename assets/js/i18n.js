@@ -83,19 +83,10 @@ window.I18N = {
     "info.contactLabel": "Frågor",
     "info.contact": "Hör av dig till oss",
 
-    "cities.title": "Våra tre hem",
-    "cities.lede": "Två städer som formade oss, och en tredje där vi hittade varandra.",
     "cities.serres": "Serres",
-    "cities.serresLandmark": "Bezesteni",
-    "cities.serresCountry": "Grekland",
     "cities.virovitica": "Virovitica",
-    "cities.viroviticaLandmark": "Slottet Pejačević",
-    "cities.viroviticaCountry": "Kroatien",
-    "cities.stockholm": "Stockholm",
-    "cities.stockholmLandmark": "Stadshuset",
-    "cities.stockholmCountry": "Sverige",
+    "cities.stockholm": "Stockholm"
 
-    "footer.route": "Serres · Virovitica · Stockholm"
   },
 
   /* ─────────────────────────── ΕΛΛΗΝΙΚΑ ─────────────────────────── */
@@ -177,19 +168,10 @@ window.I18N = {
     "info.contactLabel": "Ερωτήσεις",
     "info.contact": "Επικοινωνήστε μαζί μας",
 
-    "cities.title": "Τα τρία μας σπίτια",
-    "cities.lede": "Δύο πόλεις που μας έπλασαν, και μια τρίτη όπου βρεθήκαμε.",
     "cities.serres": "Σέρρες",
-    "cities.serresLandmark": "Μπεζεστένι",
-    "cities.serresCountry": "Ελλάδα",
     "cities.virovitica": "Βιροβίτιτσα",
-    "cities.viroviticaLandmark": "Πύργος Πεγιάτσεβιτς",
-    "cities.viroviticaCountry": "Κροατία",
-    "cities.stockholm": "Στοκχόλμη",
-    "cities.stockholmLandmark": "Δημαρχείο",
-    "cities.stockholmCountry": "Σουηδία",
+    "cities.stockholm": "Στοκχόλμη"
 
-    "footer.route": "Σέρρες · Βιροβίτιτσα · Στοκχόλμη"
   },
 
   /* ─────────────────────────── ENGLISH ─────────────────────────── */
@@ -271,19 +253,10 @@ window.I18N = {
     "info.contactLabel": "Questions",
     "info.contact": "Write to us",
 
-    "cities.title": "Our three homes",
-    "cities.lede": "Two towns that shaped us, and a third where we found each other.",
     "cities.serres": "Serres",
-    "cities.serresLandmark": "The Bezesteni",
-    "cities.serresCountry": "Greece",
     "cities.virovitica": "Virovitica",
-    "cities.viroviticaLandmark": "Pejačević Castle",
-    "cities.viroviticaCountry": "Croatia",
-    "cities.stockholm": "Stockholm",
-    "cities.stockholmLandmark": "The City Hall",
-    "cities.stockholmCountry": "Sweden",
+    "cities.stockholm": "Stockholm"
 
-    "footer.route": "Serres · Virovitica · Stockholm"
   },
 
   /* ─────────────────────────── HRVATSKI ─────────────────────────── */
@@ -365,18 +338,9 @@ window.I18N = {
     "info.contactLabel": "Pitanja",
     "info.contact": "Javite nam se",
 
-    "cities.title": "Naša tri doma",
-    "cities.lede": "Dva grada koja su nas oblikovala i treći u kojem smo se pronašli.",
     "cities.serres": "Serres",
-    "cities.serresLandmark": "Bezesten",
-    "cities.serresCountry": "Grčka",
     "cities.virovitica": "Virovitica",
-    "cities.viroviticaLandmark": "Dvorac Pejačević",
-    "cities.viroviticaCountry": "Hrvatska",
-    "cities.stockholm": "Stockholm",
-    "cities.stockholmLandmark": "Gradska vijećnica",
-    "cities.stockholmCountry": "Švedska",
+    "cities.stockholm": "Stockholm"
 
-    "footer.route": "Serres · Virovitica · Stockholm"
   }
 };

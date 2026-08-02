@@ -391,12 +391,6 @@
       setTimeout(function () { hero.classList.add("is-settled"); }, 2200);
     }
 
-    // The three landmarks draw themselves in when their section appears.
-    $$(".landmark").forEach(function (svg) {
-      $$("path", svg).forEach(function (p) { p.setAttribute("pathLength", "1"); });
-      svg.classList.add("draw");
-    });
-
     // A thin gold thread along the top showing how far down the page you are.
     var bar = document.createElement("div");
     bar.className = "progress";

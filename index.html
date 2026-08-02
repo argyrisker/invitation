@@ -104,10 +104,28 @@
       <path fill="none" stroke="currentColor" stroke-width="1.6"
             d="M10 34h28l3-18-9 7-8-12-8 12-9-7zM10 38h28"/>
     </svg>
-    <svg class="motif" viewBox="0 0 60 24"><title>Croatian pleter</title>
-      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-        <path d="M2 12Q9 2 16 12T30 12T44 12T58 12"/>
-        <path d="M2 12Q9 22 16 12T30 12T44 12T58 12"/>
+    <svg class="motif motif--pleter" viewBox="0 0 60 24"><title>Croatian pleter</title>
+      <g fill="none" stroke-width="1.7">
+        <!-- Two ribbons. The second is painted over the first, so it passes
+             over at every crossing; then a short piece of the first is
+             painted back on top at the middle crossing, with a casing in the
+             background colour that cuts the ribbon beneath it. The result
+             alternates over, under, over, the way a plait really behaves.
+             With pathLength 100 the three crossings sit at 25, 50 and 75, so
+             the piece runs from 44 to 56. Butt caps here: round ones would
+             leave a dot at the start of the dash pattern. -->
+        <path d="M2 12Q9 21 16 12T30 12T44 12T58 12" stroke="currentColor" stroke-linecap="round"/>
+        <path d="M2 12Q9 3 16 12T30 12T44 12T58 12" stroke="currentColor" stroke-linecap="round"/>
+        <!-- outer crossings: the upper ribbon passes over -->
+        <path class="pleter-casing" d="M2 12Q9 3 16 12T30 12T44 12T58 12"
+              pathLength="100" stroke-dasharray="12 38 12 200" stroke-dashoffset="-19" stroke-width="3.4"/>
+        <path d="M2 12Q9 3 16 12T30 12T44 12T58 12" stroke="currentColor"
+              pathLength="100" stroke-dasharray="12 38 12 200" stroke-dashoffset="-19"/>
+        <!-- middle crossing: the lower ribbon comes back over -->
+        <path class="pleter-casing" d="M2 12Q9 21 16 12T30 12T44 12T58 12"
+              pathLength="100" stroke-dasharray="12 200" stroke-dashoffset="-44" stroke-width="3.4"/>
+        <path d="M2 12Q9 21 16 12T30 12T44 12T58 12" stroke="currentColor"
+              pathLength="100" stroke-dasharray="12 200" stroke-dashoffset="-44"/>
       </g>
     </svg>
   </div>
@@ -262,95 +280,6 @@
     </div>
   </section>
 
-  <!-- ── the three cities ────────────────────────────────────────────── -->
-  <section class="section section--tinted cities">
-    <div class="wrap center">
-      <h2 class="section__title" data-i18n="cities.title"></h2>
-      <p class="cities__lede" data-i18n="cities.lede"></p>
-
-      <ul class="cities__list">
-
-        <li class="city">
-          <svg class="landmark" viewBox="0 0 120 80" role="img" aria-labelledby="lmSerres">
-            <title id="lmSerres">Bezesteni, Serres</title>
-            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
-              <path d="M6 78h108"/>
-              <!-- domed Ottoman market hall -->
-              <path d="M18 78V40h84v38"/>
-              <path d="M18 40h84"/>
-              <!-- three lead domes on drums -->
-              <path d="M30 40v-6M54 40v-8M78 40v-6"/>
-              <path d="M22 34h16M44 32h20M70 34h16"/>
-              <path d="M22 34a8 7 0 0 1 16 0M44 32a10 9 0 0 1 20 0M70 34a8 7 0 0 1 16 0"/>
-              <path d="M30 19v-4M54 16v-5M78 19v-4"/>
-              <!-- arched portal and windows -->
-              <path d="M48 78V60a6 6 0 0 1 12 0v18"/>
-              <path d="M28 56a5 5 0 0 1 10 0v8H28zM70 56a5 5 0 0 1 10 0v8H70z"/>
-              <path d="M18 46h84"/>
-            </g>
-          </svg>
-          <h3 class="city__name" data-i18n="cities.serres"></h3>
-          <p class="city__place" data-i18n="cities.serresLandmark"></p>
-          <p class="city__country" data-i18n="cities.serresCountry"></p>
-        </li>
-
-        <li class="city">
-          <svg class="landmark" viewBox="0 0 120 80" role="img" aria-labelledby="lmVir">
-            <title id="lmVir">Pejacevic Castle, Virovitica</title>
-            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
-              <path d="M4 78h112"/>
-              <!-- long classicist manor -->
-              <path d="M12 78V44h96v34"/>
-              <path d="M12 44l6-7h84l6 7"/>
-              <!-- central projecting bay with pediment -->
-              <path d="M46 78V34h28v44"/>
-              <path d="M44 34l16-11 16 11z"/>
-              <path d="M44 34h32"/>
-              <!-- columns and door -->
-              <path d="M52 78V52M60 78V52M68 78V52"/>
-              <path d="M50 52h20"/>
-              <path d="M55 78V64a5 5 0 0 1 10 0v14"/>
-              <!-- window rows -->
-              <path d="M20 52h8v10h-8zM32 52h8v10h-8zM80 52h8v10h-8zM92 52h8v10h-8z"/>
-              <path d="M20 66h8v8h-8zM32 66h8v8h-8zM80 66h8v8h-8zM92 66h8v8h-8z"/>
-            </g>
-          </svg>
-          <h3 class="city__name" data-i18n="cities.virovitica"></h3>
-          <p class="city__place" data-i18n="cities.viroviticaLandmark"></p>
-          <p class="city__country" data-i18n="cities.viroviticaCountry"></p>
-        </li>
-
-        <li class="city">
-          <svg class="landmark" viewBox="0 0 120 80" role="img" aria-labelledby="lmSthlm">
-            <title id="lmSthlm">Stadshuset, Stockholm</title>
-            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
-              <path d="M4 78h112"/>
-              <!-- main block with arcade -->
-              <path d="M14 78V46h62v32"/>
-              <path d="M14 46l6-5h56l6 5"/>
-              <path d="M20 78V64a5 5 0 0 1 10 0v14M36 78V64a5 5 0 0 1 10 0v14M52 78V64a5 5 0 0 1 10 0v14"/>
-              <path d="M22 52h7v8h-7zM38 52h7v8h-7zM54 52h7v8h-7z"/>
-              <!-- tower with lantern and the three crowns -->
-              <path d="M84 78V26h20v52"/>
-              <path d="M84 26l10-6 10 6"/>
-              <path d="M86 34h16M86 42h16"/>
-              <path d="M88 50h5v9h-5zM97 50h5v9h-5zM88 64h5v9h-5zM97 64h5v9h-5z"/>
-              <path d="M88 20v-4h12v4M91 16V9h6v7"/>
-              <path d="M94 9V3"/>
-            </g>
-            <g fill="currentColor">
-              <path d="M91.6 2.2h5l-.6 2.3h-3.8zM91.8 1.8l.7-1.2.6 1 .6-1.3.6 1.3.6-1 .7 1.2z"/>
-            </g>
-          </svg>
-          <h3 class="city__name" data-i18n="cities.stockholm"></h3>
-          <p class="city__place" data-i18n="cities.stockholmLandmark"></p>
-          <p class="city__country" data-i18n="cities.stockholmCountry"></p>
-        </li>
-
-      </ul>
-    </div>
-  </section>
-
   <!-- ── practical ───────────────────────────────────────────────────── -->
   <section class="section">
     <div class="wrap wrap--narrow center">
@@ -364,6 +293,31 @@
   </section>
 
 </main>
+
+<!-- ── the three home towns, as small emblems ───────────────────────── -->
+<div class="homes">
+  <span class="home">
+    <picture>
+      <source srcset="assets/img/arms-serres.webp" type="image/webp">
+      <img src="assets/img/arms-serres.png" width="115" height="132" loading="lazy" alt="" aria-hidden="true">
+    </picture>
+    <span class="home__name" data-i18n="cities.serres"></span>
+  </span>
+  <span class="home">
+    <picture>
+      <source srcset="assets/img/arms-virovitica.webp" type="image/webp">
+      <img src="assets/img/arms-virovitica.png" width="106" height="132" loading="lazy" alt="" aria-hidden="true">
+    </picture>
+    <span class="home__name" data-i18n="cities.virovitica"></span>
+  </span>
+  <span class="home">
+    <picture>
+      <source srcset="assets/img/arms-stockholm.webp" type="image/webp">
+      <img src="assets/img/arms-stockholm.png" width="112" height="132" loading="lazy" alt="" aria-hidden="true">
+    </picture>
+    <span class="home__name" data-i18n="cities.stockholm"></span>
+  </span>
+</div>
 
 <footer class="footer">
   <!-- Each flag uses its own official proportions: Sweden 8:5, Greece 3:2,
@@ -475,7 +429,6 @@
       </g>
     </svg>
   </div>
-  <p class="footer__route" data-i18n="footer.route"></p>
   <p class="footer__names">Argyrios &amp; Tomislav</p>
   <p class="footer__date">10 · 04 · 2027</p>
 </footer>

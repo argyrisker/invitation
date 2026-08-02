@@ -285,7 +285,12 @@ a { color: inherit; }
   font-style: italic;
   font-size: .52em;
   color: var(--gold);
-  line-height: 1.4;
+  /* Sit the ampersand optically halfway between the two names. Its ink sits
+     high in the line box, so the box is nudged down by the measured
+     difference; both values are in em, so they hold at every size. */
+  line-height: 1;
+  margin: .1em 0;
+  transform: translateY(.157em);
 }
 
 .cityhall {
@@ -361,6 +366,9 @@ a { color: inherit; }
   background: var(--cream);
 }
 .divider .motif { width: clamp(64px, 16vw, 104px); height: auto; opacity: .8; }
+/* the casing is painted in the background colour, so the ribbon beneath it
+   disappears exactly where the other ribbon crosses over */
+.pleter-casing { stroke: var(--cream); }
 .divider .motif--big { width: clamp(34px, 8vw, 48px); opacity: 1; }
 /* the three motifs bob gently, slightly out of phase */
 .divider.is-visible .motif { animation: bob 5s ease-in-out infinite; }
@@ -613,74 +621,36 @@ a { color: inherit; }
 .info dd { margin: 0; color: #33465e; }
 .info a { color: var(--aegean); }
 
-/* ── the three cities ──────────────────────────────────────────────────── */
-.cities__lede {
-  margin: 0 auto 2.6rem;
-  max-width: 46ch;
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-style: italic;
-  color: #4a5a70;
+/* ── the three home towns, small emblems ───────────────────────────────── */
+.homes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(1.8rem, 6vw, 3.4rem);
+  padding: 0 1.2rem 3.4rem;
+  background: var(--cream);
 }
-.cities__list {
-  display: grid;
-  gap: clamp(2rem, 5vw, 2.6rem);
-  grid-template-columns: 1fr;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .55rem;
 }
-@media (min-width: 720px) { .cities__list { grid-template-columns: repeat(3, 1fr); } }
-
-.city { position: relative; }
-.city + .city::before {
-  /* a thin gold rule between the cities on wide screens */
-  content: "";
-  position: absolute;
-  left: calc(clamp(2rem, 5vw, 2.6rem) / -2);
-  top: 12%;
-  bottom: 12%;
-  width: 1px;
-  background: var(--line);
-  display: none;
-}
-@media (min-width: 720px) { .city + .city::before { display: block; } }
-
-.landmark {
+.home img {
   display: block;
-  width: min(190px, 70%);
-  margin: 0 auto .9rem;
-  color: var(--gold);
-  transition: transform .5s cubic-bezier(.22, 1, .36, 1), color .4s;
+  height: clamp(38px, 8vw, 46px);
+  width: auto;
+  filter: saturate(.92);
+  transition: transform .4s cubic-bezier(.34, 1.56, .64, 1), filter .4s;
 }
-.city:hover .landmark { transform: translateY(-6px); color: var(--brick); }
-
-.city__name {
-  font-size: 1.55rem;
-  letter-spacing: .01em;
-  margin-bottom: .15rem;
-  color: var(--navy);
-}
-.city__place {
-  margin: 0;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--aegean);
-}
-.city__country {
-  margin: .35rem 0 0;
-  font-size: .7rem;
-  letter-spacing: .24em;
+.home:hover img { transform: translateY(-4px) scale(1.05); filter: saturate(1); }
+.home__name {
+  font-size: .68rem;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--muted);
 }
-
-/* the landmarks draw themselves in, one after the other, on reveal */
-.landmark.draw path { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
-.is-visible .landmark.draw path { animation: drawLine 2.2s ease-in-out forwards; }
-.is-visible .city:nth-child(2) .landmark.draw path { animation-delay: .35s; }
-.is-visible .city:nth-child(3) .landmark.draw path { animation-delay: .7s; }
 
 /* ── footer ────────────────────────────────────────────────────────────── */
 .footer {
@@ -705,14 +675,6 @@ a { color: inherit; }
   transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
 }
 .flag:hover { transform: translateY(-4px) scale(1.06); }
-/* the two towns we come from, and the one we are marrying in */
-.footer__route {
-  margin: 0 0 1.3rem;
-  font-size: .72rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(248, 244, 236, .58);
-}
 .footer__names {
   font-family: var(--serif);
   font-size: 1.6rem;
@@ -798,7 +760,6 @@ a { color: inherit; }
   .langbar, .countdown, .form, .thanks, .btn, .sparkle,
   .petal, .progress { display: none !important; }
   .lede .w { opacity: 1 !important; transform: none !important; }
-  .landmark.draw path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
   .reveal, .reveal .card { opacity: 1 !important; transform: none !important; }
   .photo { transform: none; box-shadow: none; border: 1px solid #ccc; }
   body { background: #fff; color: #000; font-size: 12pt; }
@@ -818,11 +779,10 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .reveal .card { opacity: 1 !important; transform: none; transition: none; }
-  .photo, .card, .btn--gold::after, .flag, .landmark { transition: none; }
+  .photo, .card, .btn--gold::after, .flag, .home img { transition: none; }
   .photo { transform: rotate(-2.5deg); }
   .sparkle, .petal, .progress { display: none; }
   .lede .w { opacity: 1 !important; transform: none !important; }
   .section__title::after { transform: scaleX(1) !important; transition: none; }
-  .landmark.draw path { stroke-dasharray: none; stroke-dashoffset: 0; }
   * { animation: none !important; }
 }
