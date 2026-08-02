@@ -69,9 +69,24 @@
         "?subject=" + encodeURIComponent("Argyrios & Tomislav · 10.04.2027");
     }
 
+    linkFlags();
     splitLede();
     renderThanks();
     tickCountdown();
+  }
+
+  /* Each flag opens its city on Wikipedia, in the language the guest is
+     reading. Special:Search/<name> lands on the article when the title
+     matches and falls back to that wiki's search when it does not, so a
+     link can never dead-end on a missing page. */
+  function linkFlags() {
+    $$(".flag-link").forEach(function (a) {
+      var name = t("cities." + a.getAttribute("data-city"));
+      a.href = "https://" + lang + ".wikipedia.org/wiki/Special:Search/" +
+               encodeURIComponent(name);
+      a.setAttribute("aria-label", name + " (Wikipedia)");
+      a.title = name;
+    });
   }
 
   /* Wrap each word of the invitation letter so it can arrive in sequence.

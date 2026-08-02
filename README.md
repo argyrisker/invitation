@@ -142,6 +142,7 @@ Everything below lives in `assets/js/config.js` and `assets/js/i18n.js`.
 | Ceremony time, if you want it shown | add it to the ceremony card in `index.html` |
 | Dress code, gift wording | `i18n.js` → `info.dress`, `info.gifts` |
 | Contact address | `config.js` → `contactEmail` |
+| Where the RSVPs go | `config.js` → `appsScriptUrl` |
 | Dates for the countdown / deadline | `config.js` → `weddingDate`, `rsvpDeadline` |
 | Diet options | the checkbox list in `index.html` + `diet.*` keys in `i18n.js` |
 
@@ -192,6 +193,10 @@ The three homes of this wedding are woven in rather than pasted on:
 - **Croatia**: the interlaced *pleter* motif in the divider, and the warm brick
   red of the dinner card.
 
+The three flags in the footer each open their city on Wikipedia, in the
+language the guest is reading, via `Special:Search/<name>` so a link can never
+land on a missing page.
+
 Flags of all three countries sit in the footer, and an illustration of the
 couple (`assets/img/couple.webp`, JPEG fallback) hangs as a taped-up polaroid
 next to the invitation letter. Its caption lives in `i18n.js`
@@ -216,8 +221,8 @@ blur into full colour as it appears, section rules unroll, the photo floats,
 the countdown numbers pop as they change, cards lift and enter staggered, the
 divider bands trace themselves in and bob, a gold thread tracks scroll
 position, the language switch crossfades, the submit button pulses while
-sending, and petals fall when someone accepts. The pleter braid also closes
-the hero along its bottom edge; the tinted, dark and footer bands overlap the
+sending, and petals fall when someone accepts. The pleter braid also runs corner to corner
+along the bottom of the hero as a repeating tile; the tinted, dark and footer bands overlap the
 section above them with softly rounded shoulders; and the two programme cards
 slide in from either side, wearing small gold icons: rings for the ceremony, a
 toast for the dinner. On a guest's first visit the invitation arrives sealed
