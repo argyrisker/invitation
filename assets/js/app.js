@@ -100,7 +100,14 @@
 
     function set(name, value) {
       var el = box.querySelector('[data-cd="' + name + '"]');
-      if (el) el.textContent = name === "days" ? String(value) : ("0" + value).slice(-2);
+      if (!el) return;
+      var text = name === "days" ? String(value) : ("0" + value).slice(-2);
+      if (el.textContent !== text) {
+        el.textContent = text;
+        el.classList.remove("pop");
+        void el.offsetWidth; // restart the animation
+        el.classList.add("pop");
+      }
     }
   }
   setInterval(tickCountdown, 1000);
@@ -300,6 +307,38 @@
     renderThanks();
     form.scrollIntoView({ behavior: "smooth", block: "center" });
   });
+
+  /* ── hero animations (skipped when the guest prefers reduced motion) ── */
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduceMotion) {
+    // City Hall draws itself in: normalize every path length to 1 so a
+    // single CSS dash animation traces the whole facade evenly.
+    var cityhall = $(".cityhall");
+    if (cityhall) {
+      $$("path", cityhall).forEach(function (p) { p.setAttribute("pathLength", "1"); });
+      cityhall.classList.add("draw");
+    }
+
+    // A few gold sparkles drifting inside the hero.
+    var hero = $(".hero");
+    if (hero) {
+      for (var i = 0; i < 14; i++) {
+        var dot = document.createElement("span");
+        dot.className = "sparkle";
+        var size = 2 + Math.random() * 3;
+        dot.style.width = dot.style.height = size.toFixed(1) + "px";
+        dot.style.left = (3 + Math.random() * 94).toFixed(1) + "%";
+        dot.style.top = (8 + Math.random() * 84).toFixed(1) + "%";
+        dot.style.animationDuration = (4 + Math.random() * 5).toFixed(1) + "s";
+        dot.style.animationDelay = (Math.random() * 6).toFixed(1) + "s";
+        hero.insertBefore(dot, hero.firstChild);
+      }
+      // let the ampersand start breathing once the entrance is over
+      setTimeout(function () { hero.classList.add("is-settled"); }, 2200);
+    }
+  }
 
   /* ── reveal on scroll ──────────────────────────────────────────────── */
   if ("IntersectionObserver" in window) {

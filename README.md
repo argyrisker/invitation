@@ -122,7 +122,18 @@ The three homes of this wedding are woven in rather than pasted on:
 - **Croatia** — the interlaced *pleter* motif in the divider, and the warm brick
   red of the dinner card.
 
-Flags of all three countries sit in the footer. The layout is mobile-first,
-works without JavaScript for reading (only the form and the countdown need it),
-respects `prefers-reduced-motion`, and the form is keyboard- and
+Flags of all three countries sit in the footer, and an illustration of the
+couple (`assets/img/couple.webp`, JPEG fallback) hangs as a taped-up polaroid
+next to the invitation letter — its caption lives in `i18n.js`
+(`invite.caption`) like all other text.
+
+**Animations**: the hero fades in as a sequence, the City Hall line drawing
+draws itself, gold sparkles drift in the header, the ampersand breathes, the
+countdown numbers pop as they change, cards lift on hover and enter staggered,
+the divider motifs bob, and the gold button gets a light sweep on hover. All of
+it is decorative only: with `prefers-reduced-motion` (or without JavaScript)
+every animation is skipped and the page is simply fully visible.
+
+The layout is mobile-first, works without JavaScript for reading (only the
+form and the countdown need it), and the form is keyboard- and
 screen-reader-navigable.

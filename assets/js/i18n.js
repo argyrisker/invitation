@@ -17,6 +17,9 @@ window.I18N = {
     "invite.title": "Kära vänner och familj",
     "invite.body": "Efter många år tillsammans säger vi äntligen ja till varandra — i Stockholms stadshus, mellan Mälarens vatten och de tre kronorna. Vi växte upp vid Egeiska havet och vid Adriatiska havet, och här i norr har vi hittat vårt gemensamma hem. Det skulle betyda allt för oss att få fira den här dagen tillsammans med er.",
 
+    "invite.caption": "På väg uppåt — tillsammans.",
+    "invite.photoAlt": "Illustration av Argyrios och Tomislav i en gondollift; den ene kysser den andres kind",
+
     "ceremony.tag": "Vigsel",
     "ceremony.title": "Borgerlig vigsel",
     "ceremony.venue": "Stockholms stadshus",
@@ -93,6 +96,9 @@ window.I18N = {
 
     "invite.title": "Αγαπημένοι μας φίλοι και συγγενείς",
     "invite.body": "Μετά από τόσα χρόνια μαζί, λέμε επιτέλους το «ναι» — στο Δημαρχείο της Στοκχόλμης, ανάμεσα στα νερά της λίμνης Μέλαρεν και τα τρία χρυσά στέμματα. Μεγαλώσαμε ο ένας στο Αιγαίο και ο άλλος στην Αδριατική, και εδώ στον Βορρά βρήκαμε το κοινό μας σπίτι. Θα ήταν μεγάλη μας χαρά να γιορτάσουμε αυτή τη μέρα μαζί σας.",
+
+    "invite.caption": "Στον δρόμο για την κορυφή — μαζί.",
+    "invite.photoAlt": "Σκίτσο του Αργύριου και του Tomislav σε τελεφερίκ· ο ένας φιλά τον άλλον στο μάγουλο",
 
     "ceremony.tag": "Τελετή",
     "ceremony.title": "Πολιτικός γάμος",
@@ -171,6 +177,9 @@ window.I18N = {
     "invite.title": "Dear friends and family",
     "invite.body": "After many years together we are finally saying yes to each other — at Stockholm City Hall, between the water of Lake Mälaren and the three golden crowns. One of us grew up by the Aegean, the other by the Adriatic, and here in the north we found our shared home. It would mean the world to us to celebrate this day with you.",
 
+    "invite.caption": "On our way up — together.",
+    "invite.photoAlt": "Illustration of Argyrios and Tomislav in a ski gondola; one kissing the other's cheek",
+
     "ceremony.tag": "Ceremony",
     "ceremony.title": "Civil ceremony",
     "ceremony.venue": "Stockholm City Hall",
@@ -247,6 +256,9 @@ window.I18N = {
 
     "invite.title": "Dragi prijatelji i obitelji",
     "invite.body": "Nakon mnogo zajedničkih godina napokon jedan drugome govorimo „da” — u stockholmskoj Gradskoj vijećnici, između voda jezera Mälaren i triju zlatnih kruna. Jedan je od nas odrastao uz Egejsko, drugi uz Jadransko more, a ovdje na sjeveru pronašli smo svoj zajednički dom. Bilo bi nam neizmjerno drago proslaviti ovaj dan s vama.",
+
+    "invite.caption": "Na putu prema vrhu — zajedno.",
+    "invite.photoAlt": "Ilustracija Argyriosa i Tomislava u žičari; jedan ljubi drugoga u obraz",
 
     "ceremony.tag": "Obred",
     "ceremony.title": "Građanski obred",

@@ -101,9 +101,19 @@
 
   <!-- ── invitation ──────────────────────────────────────────────────── -->
   <section class="section">
-    <div class="wrap wrap--narrow center">
-      <h2 class="section__title" data-i18n="invite.title"></h2>
-      <p class="lede" data-i18n="invite.body"></p>
+    <div class="wrap invite-grid">
+      <figure class="photo">
+        <picture>
+          <source srcset="assets/img/couple.webp" type="image/webp">
+          <img src="assets/img/couple.jpg" width="900" height="1350" loading="lazy"
+               data-i18n-attr="alt:invite.photoAlt">
+        </picture>
+        <figcaption data-i18n="invite.caption"></figcaption>
+      </figure>
+      <div class="invite-text center">
+        <h2 class="section__title" data-i18n="invite.title"></h2>
+        <p class="lede" data-i18n="invite.body"></p>
+      </div>
     </div>
   </section>
 
