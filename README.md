@@ -64,9 +64,13 @@ appsScriptUrl: "https://script.google.com/macros/s/AKfy..../exec",
 
 Commit and push that one line, and the form is live.
 
-**6. Check it.** Open the `/exec` URL in a browser. It should print something
-like `{"ok":true,"service":"rsvp","sheet":"RSVP","replies":0}`. Then send
-yourself a test RSVP from the invitation and delete that row from the Sheet.
+**6. Check it.** Open [`setup.html`](setup.html) (live at
+`https://<user>.github.io/invitation/setup.html`), paste the `/exec` URL and
+press **Run the check**. It sends a real test reply and tells you exactly what
+happened: whether the row was written, or which setting is wrong. On success it
+prints the line to paste into `config.js`. Delete the test row afterwards.
+
+That page is not linked from the invitation, and guests never see it.
 
 #### What the Sheet looks like
 
@@ -193,12 +197,25 @@ couple (`assets/img/couple.webp`, JPEG fallback) hangs as a taped-up polaroid
 next to the invitation letter. Its caption lives in `i18n.js`
 (`invite.caption`) like all other text.
 
-**Animations**: the hero fades in as a sequence, the City Hall line drawing
-draws itself, gold sparkles drift in the header, the ampersand breathes, the
-countdown numbers pop as they change, cards lift on hover and enter staggered,
-the divider motifs bob, and the gold button gets a light sweep on hover. All of
-it is decorative only: with `prefers-reduced-motion` (or without JavaScript)
-every animation is skipped and the page is simply fully visible.
+**The three cities** get their own section: the Bezesteni in Serres,
+Pejačević Castle in Virovitica and the City Hall in Stockholm, drawn as gold
+line art in the same style as the hero. They are drawings, not the municipal
+coats of arms, which are copyrighted and in Sweden legally protected.
+
+**Flags** in the footer are drawn to each country's official proportions
+(Sweden 8:5, Greece 3:2, Croatia 2:1) at a shared height. The Croatian one
+carries the full coat of arms: a 5 by 5 chequy starting on red, 13 red squares,
+under the crown of the five historic shields.
+
+**Animations**, all decorative: the hero arrives as a sequence, the City Hall
+and the three landmarks draw themselves stroke by stroke, gold sparkles drift
+in the header, the ampersand breathes, the invitation letter arrives word by
+word, section rules unroll, the photo floats, the countdown numbers pop as they
+change, cards lift and enter staggered, the divider motifs bob, a gold thread
+tracks scroll position, the language switch crossfades, the submit button
+pulses while sending, and petals fall when someone accepts. With
+`prefers-reduced-motion` (or without JavaScript) every one of them is skipped
+and the page is simply fully visible.
 
 **Typography**: **Cardo** for the headings, names and letter, **Commissioner**
 for the small uppercase labels and the form. Both were picked because they

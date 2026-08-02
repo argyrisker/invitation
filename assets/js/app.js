@@ -69,15 +69,40 @@
         "?subject=" + encodeURIComponent("Argyrios & Tomislav · 10.04.2027");
     }
 
+    splitLede();
     renderThanks();
     tickCountdown();
   }
 
+  /* Wrap each word of the invitation letter so it can arrive in sequence.
+     Runs after every translation, since the text is replaced each time. */
+  function splitLede() {
+    if (reduceMotion) return;
+    $$(".lede").forEach(function (el) {
+      var words = (el.textContent || "").split(/\s+/).filter(Boolean);
+      if (!words.length) return;
+      el.textContent = "";
+      words.forEach(function (word, i) {
+        var span = document.createElement("span");
+        span.className = "w";
+        span.textContent = word;
+        span.style.animationDelay = (i * 0.022).toFixed(3) + "s";
+        el.appendChild(span);
+        el.appendChild(document.createTextNode(" "));
+      });
+    });
+  }
+
   $$(".lang").forEach(function (btn) {
     btn.addEventListener("click", function () {
+      if (btn.getAttribute("data-lang") === lang) return;
       lang = btn.getAttribute("data-lang");
       store(STORE_LANG, lang);
       applyLang();
+      // brief crossfade so the whole page changes language as one
+      document.body.classList.remove("lang-swap");
+      void document.body.offsetWidth;
+      document.body.classList.add("lang-swap");
     });
   });
 
@@ -294,6 +319,7 @@
         store(STORE_SENT, JSON.stringify(data));
         renderThanks();
         thanks.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (data.attending === "Yes") throwPetals();
       })
       .catch(function () {
         submit.disabled = false;
@@ -363,6 +389,50 @@
       }
       // let the ampersand start breathing once the entrance is over
       setTimeout(function () { hero.classList.add("is-settled"); }, 2200);
+    }
+
+    // The three landmarks draw themselves in when their section appears.
+    $$(".landmark").forEach(function (svg) {
+      $$("path", svg).forEach(function (p) { p.setAttribute("pathLength", "1"); });
+      svg.classList.add("draw");
+    });
+
+    // A thin gold thread along the top showing how far down the page you are.
+    var bar = document.createElement("div");
+    bar.className = "progress";
+    document.body.appendChild(bar);
+
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  /* Petals thrown across the screen when someone says yes. */
+  function throwPetals() {
+    if (reduceMotion) return;
+    var colours = ["#c9a44c", "#e0c684", "#9c4a3c", "#1b4f86", "#f8f4ec"];
+    for (var i = 0; i < 40; i++) {
+      var petal = document.createElement("span");
+      petal.className = "petal";
+      var size = 6 + Math.random() * 9;
+      petal.style.width = petal.style.height = size.toFixed(1) + "px";
+      petal.style.left = (Math.random() * 100).toFixed(1) + "vw";
+      petal.style.background = colours[i % colours.length];
+      petal.style.setProperty("--drift", (Math.random() * 160 - 80).toFixed(0) + "px");
+      petal.style.setProperty("--spin", (Math.random() * 900 - 300).toFixed(0) + "deg");
+      petal.style.animationDuration = (3.4 + Math.random() * 2.6).toFixed(1) + "s";
+      petal.style.animationDelay = (Math.random() * 1.1).toFixed(2) + "s";
+      document.body.appendChild(petal);
+      setTimeout(function (node) {
+        return function () { node.remove(); };
+      }(petal), 8000);
     }
   }
 

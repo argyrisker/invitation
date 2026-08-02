@@ -163,6 +163,14 @@ a { color: inherit; }
 }
 .photo::before { left: -26px; transform: rotate(-38deg); }
 .photo::after  { right: -26px; transform: rotate(38deg); }
+/* on a narrow phone the tape plus the float rotation would push the page
+   a few pixels wider than the screen, so shrink it there */
+@media (max-width: 480px) {
+  .photo { --tilt: -1.5deg; transform: rotate(-1.5deg); }
+  .photo::before, .photo::after { width: 58px; height: 20px; top: -9px; }
+  .photo::before { left: -14px; }
+  .photo::after  { right: -14px; }
+}
 .photo img { display: block; width: 100%; height: auto; border-radius: 1px; }
 .photo figcaption {
   padding: .75rem .2rem .3rem;
@@ -605,6 +613,75 @@ a { color: inherit; }
 .info dd { margin: 0; color: #33465e; }
 .info a { color: var(--aegean); }
 
+/* ── the three cities ──────────────────────────────────────────────────── */
+.cities__lede {
+  margin: 0 auto 2.6rem;
+  max-width: 46ch;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #4a5a70;
+}
+.cities__list {
+  display: grid;
+  gap: clamp(2rem, 5vw, 2.6rem);
+  grid-template-columns: 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 720px) { .cities__list { grid-template-columns: repeat(3, 1fr); } }
+
+.city { position: relative; }
+.city + .city::before {
+  /* a thin gold rule between the cities on wide screens */
+  content: "";
+  position: absolute;
+  left: calc(clamp(2rem, 5vw, 2.6rem) / -2);
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  background: var(--line);
+  display: none;
+}
+@media (min-width: 720px) { .city + .city::before { display: block; } }
+
+.landmark {
+  display: block;
+  width: min(190px, 70%);
+  margin: 0 auto .9rem;
+  color: var(--gold);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), color .4s;
+}
+.city:hover .landmark { transform: translateY(-6px); color: var(--brick); }
+
+.city__name {
+  font-size: 1.55rem;
+  letter-spacing: .01em;
+  margin-bottom: .15rem;
+  color: var(--navy);
+}
+.city__place {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--aegean);
+}
+.city__country {
+  margin: .35rem 0 0;
+  font-size: .7rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* the landmarks draw themselves in, one after the other, on reveal */
+.landmark.draw path { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+.is-visible .landmark.draw path { animation: drawLine 2.2s ease-in-out forwards; }
+.is-visible .city:nth-child(2) .landmark.draw path { animation-delay: .35s; }
+.is-visible .city:nth-child(3) .landmark.draw path { animation-delay: .7s; }
+
 /* ── footer ────────────────────────────────────────────────────────────── */
 .footer {
   padding: 2.8rem 1rem 3.2rem;
@@ -612,13 +689,22 @@ a { color: inherit; }
   background: var(--navy-deep);
   color: rgba(248, 244, 236, .8);
 }
-.flags { display: flex; justify-content: center; gap: .9rem; margin-bottom: 1.4rem; }
+.flags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+/* one shared height, each flag keeping its own official width */
 .flag {
-  width: 34px;
-  height: auto;
+  height: 28px;
+  width: auto;
   border-radius: 2px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
 }
+.flag:hover { transform: translateY(-4px) scale(1.06); }
 /* the two towns we come from, and the one we are marrying in */
 .footer__route {
   margin: 0 0 1.3rem;
@@ -648,9 +734,71 @@ a { color: inherit; }
 }
 .reveal.is-visible { opacity: 1; transform: none; }
 
+/* ── scroll progress, a thin gold thread along the top ─────────────────── */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* ── the section rule draws itself outward ─────────────────────────────── */
+.section__title::after { transform: scaleX(0); transition: transform .9s cubic-bezier(.22, 1, .36, 1) .15s; }
+.is-visible .section__title::after,
+.hero .section__title::after { transform: scaleX(1); }
+
+/* ── the invitation letter arrives word by word ────────────────────────── */
+.lede .w { display: inline-block; opacity: 0; transform: translateY(10px); }
+.is-visible .lede .w { animation: rise .55s ease forwards; }
+
+/* ── the photo breathes, and tilts a little as you scroll past ─────────── */
+@keyframes floaty {
+  0%, 100% { transform: rotate(var(--tilt, -2.5deg)) translateY(0); }
+  50%      { transform: rotate(var(--tilt, -2.5deg)) translateY(-9px); }
+}
+.photo { animation: floaty 7s ease-in-out infinite; }
+.photo:hover { animation-play-state: paused; }
+
+/* ── language switch crossfade ─────────────────────────────────────────── */
+@keyframes langIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.lang-swap main { animation: langIn .5s ease; }
+
+/* ── petals thrown when an RSVP is accepted ────────────────────────────── */
+.petal {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 60% 10% 60% 10%;
+  pointer-events: none;
+  z-index: 50;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+  10%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(102vh) translateX(var(--drift, 0px)) rotate(var(--spin, 540deg)); }
+}
+
+/* ── the gold submit button pulses gently while it waits ───────────────── */
+@keyframes waiting {
+  0%, 100% { box-shadow: 0 10px 26px rgba(201, 164, 76, .25); }
+  50%      { box-shadow: 0 10px 34px rgba(201, 164, 76, .55); }
+}
+.btn--gold:disabled { animation: waiting 1.2s ease-in-out infinite; }
+
 /* ── print (some guests will want it on paper) ─────────────────────────── */
 @media print {
-  .langbar, .countdown, .form, .thanks, .btn, .sparkle { display: none !important; }
+  .langbar, .countdown, .form, .thanks, .btn, .sparkle,
+  .petal, .progress { display: none !important; }
+  .lede .w { opacity: 1 !important; transform: none !important; }
+  .landmark.draw path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
   .reveal, .reveal .card { opacity: 1 !important; transform: none !important; }
   .photo { transform: none; box-shadow: none; border: 1px solid #ccc; }
   body { background: #fff; color: #000; font-size: 12pt; }
@@ -670,7 +818,11 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .reveal .card { opacity: 1 !important; transform: none; transition: none; }
-  .photo, .card, .btn--gold::after { transition: none; }
-  .sparkle { display: none; }
+  .photo, .card, .btn--gold::after, .flag, .landmark { transition: none; }
+  .photo { transform: rotate(-2.5deg); }
+  .sparkle, .petal, .progress { display: none; }
+  .lede .w { opacity: 1 !important; transform: none !important; }
+  .section__title::after { transform: scaleX(1) !important; transition: none; }
+  .landmark.draw path { stroke-dasharray: none; stroke-dashoffset: 0; }
   * { animation: none !important; }
 }
