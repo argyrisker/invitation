@@ -216,7 +216,11 @@ blur into full colour as it appears, section rules unroll, the photo floats,
 the countdown numbers pop as they change, cards lift and enter staggered, the
 divider bands trace themselves in and bob, a gold thread tracks scroll
 position, the language switch crossfades, the submit button pulses while
-sending, and petals fall when someone accepts. With `prefers-reduced-motion`
+sending, and petals fall when someone accepts. The pleter braid also closes
+the hero along its bottom edge; the tinted, dark and footer bands overlap the
+section above them with softly rounded shoulders; and the two programme cards
+slide in from either side, wearing small gold icons: rings for the ceremony, a
+toast for the dinner. With `prefers-reduced-motion`
 (or without JavaScript) every one of them is skipped and the page is simply
 fully visible.
 
