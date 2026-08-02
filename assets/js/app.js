@@ -398,7 +398,8 @@
     $$(".svg-defs path").forEach(function (p) { p.setAttribute("pathLength", "1"); });
     $$(".divider .motif").forEach(function (svg) {
       $$("path", svg).forEach(function (p) { p.setAttribute("pathLength", "1"); });
-      svg.classList.add("draw");
+      // the pleter is opened by the scroll-driven clip instead
+      if (!svg.classList.contains("motif--weave")) svg.classList.add("draw");
     });
 
     // A small secret: tapping the ampersand releases a burst of hearts.
@@ -410,22 +411,63 @@
       });
     }
 
-    // A thin gold thread along the top showing how far down the page you are.
-    var bar = document.createElement("div");
-    bar.className = "progress";
-    document.body.appendChild(bar);
-
+    /* Everything that follows the scroll runs from one rAF-throttled
+       handler: the thread that stitches the page together, and the braid
+       that weaves itself as the divider goes by. */
+    var threadPath = $(".thread path");
+    var weaveRect = document.getElementById("weaveRect");
+    var divider = $(".divider");
     var ticking = false;
-    window.addEventListener("scroll", function () {
+
+    function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(function () {
-        var max = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+        var view = window.innerHeight;
+
+        if (threadPath) {
+          var max = document.documentElement.scrollHeight - view;
+          var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+          // the thread is always a little ahead of the reader
+          threadPath.style.strokeDashoffset = String(1 - Math.min(1, p * 1.08));
+        }
+
+        if (weaveRect && divider) {
+          // weave from the moment the divider appears until it is well up
+          var box = divider.getBoundingClientRect();
+          var w = (view * 0.9 - box.top) / (view * 0.55);
+          weaveRect.setAttribute("width", (168 * clamp01(w)).toFixed(1));
+        }
         ticking = false;
       });
-    }, { passive: true });
+    }
+
+    function clamp01(n) { return n < 0 ? 0 : n > 1 ? 1 : n; }
+
+    if (weaveRect) weaveRect.setAttribute("width", "0");
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    onScroll();
   }
+
+  /* The envelope: CSS runs the whole sequence, so this only remembers that
+     the guest has seen it and lets them skip it. */
+  (function envelope() {
+    var box = $("#envelope");
+    if (!box || box.hidden) return;
+    try { localStorage.setItem("rsvp.opened", "1"); } catch (e) {}
+
+    function open() {
+      document.documentElement.classList.remove("is-sealed");
+      box.remove();
+    }
+    box.addEventListener("click", open);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" || e.key === "Enter") open();
+    });
+    // the CSS fade ends at 3.0s; clear it from the page just after
+    setTimeout(open, 3200);
+  })();
 
   /* Hearts from the ampersand. */
   function spawnHearts(cx, cy) {
