@@ -585,6 +585,9 @@ a { color: inherit; }
 }
 
 .form { display: grid; gap: 1.4rem; }
+/* the diet block is one grid item, so it needs the form's spacing inside it,
+   otherwise the allergies field sits flush against the checkboxes */
+.field-group { display: grid; gap: 1.4rem; }
 
 .grid-2 { display: grid; gap: 1.4rem; grid-template-columns: 1fr; }
 @media (min-width: 620px) { .grid-2 { grid-template-columns: 1fr 1fr; } }

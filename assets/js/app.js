@@ -442,10 +442,14 @@
         var view = window.innerHeight;
 
         if (threadPath) {
-          var max = document.documentElement.scrollHeight - view;
-          var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-          // the thread is always a little ahead of the reader
-          threadPath.style.strokeDashoffset = String(1 - Math.min(1, p * 1.08));
+          /* The drawn tip tracks the fold rather than the scroll ratio, so
+             the thread always reaches the part of the page being read. The
+             ratio version ran ahead near the top and lagged near the end,
+             because the two measure different things: scrollY / (height -
+             viewport) hits 1 while the tip still has a screenful to go. */
+          var doc = document.documentElement.scrollHeight;
+          var tip = doc > 0 ? (window.scrollY + view * 0.92) / doc : 0;
+          threadPath.style.strokeDashoffset = String(1 - clamp01(tip));
         }
 
         if (divider) {
