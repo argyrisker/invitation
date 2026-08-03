@@ -87,6 +87,10 @@ window.I18N = {
     "cities.virovitica": "Virovitica",
     "cities.stockholm": "Stockholm",
 
+    "countries.sweden": "Sverige",
+    "countries.greece": "Grekland",
+    "countries.croatia": "Kroatien",
+
     "envelope.hint": "Tryck för att öppna"
 
   },
@@ -173,6 +177,10 @@ window.I18N = {
     "cities.serres": "Σέρρες",
     "cities.virovitica": "Βιροβίτιτσα",
     "cities.stockholm": "Στοκχόλμη",
+
+    "countries.sweden": "Σουηδία",
+    "countries.greece": "Ελλάδα",
+    "countries.croatia": "Κροατία",
 
     "envelope.hint": "Πατήστε για να ανοίξετε"
 
@@ -261,6 +269,10 @@ window.I18N = {
     "cities.virovitica": "Virovitica",
     "cities.stockholm": "Stockholm",
 
+    "countries.sweden": "Sweden",
+    "countries.greece": "Greece",
+    "countries.croatia": "Croatia",
+
     "envelope.hint": "Tap to open"
 
   },
@@ -347,6 +359,10 @@ window.I18N = {
     "cities.serres": "Serres",
     "cities.virovitica": "Virovitica",
     "cities.stockholm": "Stockholm",
+
+    "countries.sweden": "Švedska",
+    "countries.greece": "Grčka",
+    "countries.croatia": "Hrvatska",
 
     "envelope.hint": "Dodirnite za otvaranje"
 

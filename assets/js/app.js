@@ -69,22 +69,30 @@
         "?subject=" + encodeURIComponent("Argyrios & Tomislav · 10.04.2027");
     }
 
-    linkFlags();
+    linkPlaces();
     splitLede();
     renderThanks();
     tickCountdown();
   }
 
-  /* Each flag opens its city on Wikipedia, in the language the guest is
-     reading. Special:Search/<name> lands on the article when the title
-     matches and falls back to that wiki's search when it does not, so a
-     link can never dead-end on a missing page. */
-  function linkFlags() {
+  /* The flags open their country and the emblems their city, each on the
+     Wikipedia of the language the guest is reading. Special:Search/<name>
+     lands on the article when the title matches and falls back to that
+     wiki's search when it does not, so a link can never dead-end. */
+  function linkPlaces() {
+    function wiki(name) {
+      return "https://" + lang + ".wikipedia.org/wiki/Special:Search/" +
+             encodeURIComponent(name);
+    }
     $$(".flag-link").forEach(function (a) {
-      var name = t("cities." + a.getAttribute("data-city"));
-      a.href = "https://" + lang + ".wikipedia.org/wiki/Special:Search/" +
-               encodeURIComponent(name);
+      var name = t("countries." + a.getAttribute("data-country"));
+      a.href = wiki(name);
       a.setAttribute("aria-label", name + " (Wikipedia)");
+      a.title = name;
+    });
+    $$("a.home[data-city]").forEach(function (a) {
+      var name = t("cities." + a.getAttribute("data-city"));
+      a.href = wiki(name);
       a.title = name;
     });
   }

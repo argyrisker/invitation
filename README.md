@@ -193,9 +193,10 @@ The three homes of this wedding are woven in rather than pasted on:
 - **Croatia**: the interlaced *pleter* motif in the divider, and the warm brick
   red of the dinner card.
 
-The three flags in the footer each open their city on Wikipedia, in the
-language the guest is reading, via `Special:Search/<name>` so a link can never
-land on a missing page.
+The three flags in the footer open their country on Wikipedia, and the three
+city emblems above them open their city, each in the language the guest is
+reading, via `Special:Search/<name>` so a link can never land on a missing
+page.
 
 Flags of all three countries sit in the footer, and an illustration of the
 couple (`assets/img/couple.webp`, JPEG fallback) hangs as a taped-up polaroid
