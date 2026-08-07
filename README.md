@@ -3,7 +3,7 @@
 A single-page invitation in **Swedish, Greek, English and Croatian**, with an RSVP
 form whose answers land in a Google Sheet (or a Google Form).
 
-- Ceremony: Stockholm City Hall, Saturday 5 June 2027. The page states clearly
+- Ceremony: Stockholm City Hall, Saturday 5 June 2027 at 15:20. The page states clearly
   that only the very closest relatives fit inside the City Hall, and that the
   invitation is for the dinner afterwards. Guests invited to the ceremony
   itself get a personalised link instead (see *Per-guest links* below).
@@ -140,7 +140,7 @@ Everything below lives in `assets/js/config.js` and `assets/js/i18n.js`.
 | What | Where |
 |---|---|
 | Dinner venue and address | `i18n.js` → `dinner.venue` in all four languages |
-| Ceremony time, if you want it shown | add it to the ceremony card in `index.html` |
+| Ceremony and dinner times | the `card__time` lines in `index.html` (15:20 and 18:00) |
 | Contact address | `config.js` → `contactEmail` |
 | Where the RSVPs go | `config.js` → `appsScriptUrl` |
 | Dates for the countdown / deadline | `config.js` → `weddingDate`, `rsvpDeadline` |
