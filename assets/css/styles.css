@@ -711,7 +711,6 @@ a { color: inherit; }
   margin: 2rem 0 0;
   text-align: center;
 }
-@media (min-width: 780px) { .info { grid-template-columns: repeat(3, 1fr); } }
 .info dt {
   font-size: .74rem;
   letter-spacing: .22em;

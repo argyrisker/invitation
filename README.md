@@ -3,10 +3,11 @@
 A single-page invitation in **Swedish, Greek, English and Croatian**, with an RSVP
 form whose answers land in a Google Sheet (or a Google Form).
 
-- Ceremony: Stockholm City Hall, Saturday 10 April 2027. The page states clearly
+- Ceremony: Stockholm City Hall, Saturday 5 June 2027. The page states clearly
   that only the very closest relatives fit inside the City Hall, and that the
-  invitation is for the dinner afterwards.
-- Dinner: 18:00, venue to be announced.
+  invitation is for the dinner afterwards. Guests invited to the ceremony
+  itself get a personalised link instead (see *Per-guest links* below).
+- Dinner: around 18:00, venue to be announced.
 - RSVP deadline: 31 December 2026.
 
 Nothing to build and no dependencies: plain HTML, CSS and JavaScript. Open
@@ -140,7 +141,6 @@ Everything below lives in `assets/js/config.js` and `assets/js/i18n.js`.
 |---|---|
 | Dinner venue and address | `i18n.js` → `dinner.venue` in all four languages |
 | Ceremony time, if you want it shown | add it to the ceremony card in `index.html` |
-| Dress code, gift wording | `i18n.js` → `info.dress`, `info.gifts` |
 | Contact address | `config.js` → `contactEmail` |
 | Where the RSVPs go | `config.js` → `appsScriptUrl` |
 | Dates for the countdown / deadline | `config.js` → `weddingDate`, `rsvpDeadline` |
@@ -149,6 +149,33 @@ Everything below lives in `assets/js/config.js` and `assets/js/i18n.js`.
 Language is chosen automatically from the browser, remembered in
 `localStorage`, and can be forced with `?lang=sv` (`el`, `en`, `hr`), handy for
 sending the right link to each side of the family.
+
+### Per-guest links
+
+The invitation personalises itself from the link, so one page serves every
+guest. Build each guest's link by adding parameters after `?`, joined by `&`:
+
+| Parameter | What it does |
+|---|---|
+| `?to=Maria` | The salutation becomes *Dear Maria* (in the page's language) instead of *Dear friends and family* |
+| `?greet=Αγαπημένη μας θεία Μαρία` | Replaces the whole salutation line verbatim. Use it when Greek or Croatian grammar needs a different case or gender than the `?to=` template produces |
+| `?inv=ceremony` | For guests invited inside the City Hall: swaps the seats-are-limited note for the ceremony welcome (`ceremony.noteCeremony` in `i18n.js`) |
+| `?lang=el` | Fixes the language, so the greeting and the grammar you chose stay together |
+
+Examples, ready to paste after the site URL:
+
+```text
+?lang=en&to=Uncle Peter
+?lang=el&to=Μαρία και Νίκο&inv=ceremony
+?lang=hr&greet=Draga bako&inv=ceremony
+```
+
+Spaces may be typed as they are (browsers encode them), names are plain text
+only and capped at 60 characters (`greet` at 120), so a mangled or malicious
+link cannot break or deface the page; without parameters every text falls back
+to the general wording. The choice survives switching language on the page:
+`to`/`greet` stay as typed, and `inv=ceremony` follows the reader into each
+language.
 
 ---
 

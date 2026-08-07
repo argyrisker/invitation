@@ -40,6 +40,33 @@
     return LANGS.indexOf(CFG.defaultLang) !== -1 ? CFG.defaultLang : "en";
   }
 
+  /* ── per-guest links ───────────────────────────────────────────────────
+     ?to=Maria         puts the guest's name in the salutation
+     ?greet=Dear+Maria replaces the whole salutation verbatim, for when Greek
+                       or Croatian grammar needs a different case than the
+                       template can produce
+     ?inv=ceremony     swaps the seats-are-limited note for the ceremony
+                       welcome, for guests invited inside the City Hall
+     Everything is written with textContent, so nothing in a URL can inject
+     markup into the page. */
+  var QS = new URLSearchParams(location.search);
+  var GUEST = {
+    name:     (QS.get("to")    || "").trim().slice(0, 60),
+    greet:    (QS.get("greet") || "").trim().slice(0, 120),
+    ceremony: QS.get("inv") === "ceremony"
+  };
+  if (GUEST.ceremony) {
+    $$('[data-i18n="ceremony.note"]').forEach(function (el) {
+      el.setAttribute("data-i18n", "ceremony.noteCeremony");
+    });
+  }
+  function personalizeGreeting() {
+    var el = $('[data-i18n="invite.title"]');
+    if (!el) return;
+    if (GUEST.greet)     el.textContent = GUEST.greet;
+    else if (GUEST.name) el.textContent = t("invite.titleTo").replace("{name}", GUEST.name);
+  }
+
   /* ── translation ───────────────────────────────────────────────────── */
   function applyLang() {
     document.documentElement.lang = t("html.lang");
@@ -56,6 +83,8 @@
       });
     });
 
+    personalizeGreeting();
+
     $$(".lang").forEach(function (btn) {
       var on = btn.getAttribute("data-lang") === lang;
       btn.classList.toggle("is-active", on);
@@ -66,7 +95,7 @@
     if (contact) {
       contact.textContent = t("info.contact");
       contact.href = "mailto:" + (CFG.contactEmail || "") +
-        "?subject=" + encodeURIComponent("Argyrios & Tomislav · 10.04.2027");
+        "?subject=" + encodeURIComponent("Argyrios & Tomislav · 05.06.2027");
     }
 
     linkPlaces();
@@ -130,7 +159,7 @@
   });
 
   /* ── countdown ─────────────────────────────────────────────────────── */
-  var target = new Date(CFG.weddingDate || "2027-04-10T18:00:00+02:00").getTime();
+  var target = new Date(CFG.weddingDate || "2027-06-05T18:00:00+02:00").getTime();
 
   function tickCountdown() {
     var box = $("#countdown");
