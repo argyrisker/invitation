@@ -16,6 +16,9 @@ window.I18N = {
 
     "invite.title": "Kära vänner och familj",
     "invite.titleTo": "Kära {name}",
+    "invite.titleToF": "Kära {name}",
+    "invite.titleToM": "Kära {name}",
+    "invite.titleToFP": "Kära {name}",
     "invite.body": "Vår gemensamma resa har fört oss hit. Med stor glädje bjuder vi in dig till vårt bröllop, när vi säger ja till varandra i Stockholms stadshus, under de tre gyllene kronorna och vid Mälarens vatten. Den ene av oss växte upp i Serres i norra Grekland, den andre i Virovitica i Slavonien. Två inlandsstäder långt från varandra, och här uppe i norr har vi hittat vårt gemensamma hem. Det skulle betyda allt för oss att få fira den här dagen tillsammans med er.",
 
     "invite.caption": "På väg uppåt, tillsammans.",
@@ -25,7 +28,7 @@ window.I18N = {
     "ceremony.title": "Borgerlig vigsel",
     "ceremony.venue": "Stockholms stadshus",
     "ceremony.address": "Hantverkargatan 1, Stockholm",
-    "ceremony.note": "På grund av det begränsade antalet platser i Stadshuset kan tyvärr endast den allra närmaste familjen närvara vid själva vigseln. Den här inbjudan gäller middagen efteråt, och där vill vi verkligen ha med er!",
+    "ceremony.note": "Eftersom antalet platser i Stadshuset är begränsat kan bara vår allra närmaste familj närvara vid själva vigseln därinne. Men vi ser mycket fram emot att fira tillsammans med dig utanför Stadshuset, innan vi fortsätter festligheterna.",
     "ceremony.noteCeremony": "Vi vill så gärna ha dig vid vår sida inne i Stadshuset under själva vigseln, och därefter på middagen.",
 
     "dinner.tag": "Fest",
@@ -105,6 +108,9 @@ window.I18N = {
 
     "invite.title": "Αγαπημένοι μας φίλοι και συγγενείς",
     "invite.titleTo": "Αγαπημένοι μας {name}",
+    "invite.titleToF": "Αγαπημένη μας {name}",
+    "invite.titleToM": "Αγαπημένε μας {name}",
+    "invite.titleToFP": "Αγαπημένες μας {name}",
     "invite.body": "Το κοινό μας ταξίδι μάς έφερε ως εδώ. Με μεγάλη χαρά σας προσκαλούμε στον γάμο μας, καθώς λέμε το «ναι» ο ένας στον άλλον στο Δημαρχείο της Στοκχόλμης, κάτω από τα τρία χρυσά στέμματα και δίπλα στα νερά της λίμνης Μέλαρεν. Ο ένας μας μεγάλωσε στις Σέρρες, ο άλλος στη Βιροβίτιτσα της Σλαβονίας. Δύο πόλεις της ενδοχώρας, μακριά η μία από την άλλη, κι εδώ στον Βορρά βρήκαμε το κοινό μας σπίτι. Θα ήταν μεγάλη μας χαρά να γιορτάσουμε αυτή τη μέρα μαζί σας.",
 
     "invite.caption": "Στον δρόμο για την κορυφή, μαζί.",
@@ -114,7 +120,7 @@ window.I18N = {
     "ceremony.title": "Πολιτικός γάμος",
     "ceremony.venue": "Δημαρχείο της Στοκχόλμης",
     "ceremony.address": "Hantverkargatan 1, Στοκχόλμη",
-    "ceremony.note": "Λόγω της περιορισμένης χωρητικότητας του Δημαρχείου, στην ίδια την τελετή μπορούν δυστυχώς να παρευρεθούν μόνο οι πιο στενοί συγγενείς. Η πρόσκληση αυτή αφορά το δείπνο που ακολουθεί, και εκεί σας θέλουμε οπωσδήποτε δίπλα μας!",
+    "ceremony.note": "Επειδή οι θέσεις μέσα στο Δημαρχείο είναι περιορισμένες, στην ίδια την τελετή θα μπορέσουν να παρευρεθούν μόνο τα πιο στενά μέλη της οικογένειάς μας. Θα χαρούμε όμως πολύ να βρεθείτε έξω από το Δημαρχείο, να το γιορτάσουμε μαζί πριν συνεχίσουμε το γλέντι.",
     "ceremony.noteCeremony": "Θα ήταν μεγάλη μας τιμή να είστε δίπλα μας μέσα στο Δημαρχείο στην ίδια την τελετή, και έπειτα στο δείπνο.",
 
     "dinner.tag": "Γιορτή",
@@ -194,6 +200,9 @@ window.I18N = {
 
     "invite.title": "Dear friends and family",
     "invite.titleTo": "Dear {name}",
+    "invite.titleToF": "Dear {name}",
+    "invite.titleToM": "Dear {name}",
+    "invite.titleToFP": "Dear {name}",
     "invite.body": "Our journey together has led us here. We are delighted to invite you to our wedding as we say ‘yes’ to each other at Stockholm City Hall, beneath the three golden crowns and beside the waters of Lake Mälaren. One of us grew up in Serres in northern Greece, the other in Virovitica in Slavonia. Two inland towns far apart, and here in the north we have found our shared home. It would mean the world to us to celebrate this day with you.",
 
     "invite.caption": "On our way up, together.",
@@ -203,7 +212,7 @@ window.I18N = {
     "ceremony.title": "Civil ceremony",
     "ceremony.venue": "Stockholm City Hall",
     "ceremony.address": "Hantverkargatan 1, Stockholm",
-    "ceremony.note": "Because the number of seats inside the City Hall is strictly limited, only our very closest relatives can be present at the ceremony itself. This invitation is for the dinner afterwards, and that is where we truly want you with us!",
+    "ceremony.note": "Because the number of seats inside City Hall is limited, only our closest family members will be able to attend the ceremony inside. We would, however, love for you to join us outside City Hall to celebrate with us before we continue the festivities.",
     "ceremony.noteCeremony": "We would be honoured to have you beside us inside the City Hall for the ceremony itself, and afterwards at the dinner.",
 
     "dinner.tag": "Celebration",
@@ -283,6 +292,9 @@ window.I18N = {
 
     "invite.title": "Dragi prijatelji i obitelji",
     "invite.titleTo": "Dragi {name}",
+    "invite.titleToF": "Draga {name}",
+    "invite.titleToM": "Dragi {name}",
+    "invite.titleToFP": "Drage {name}",
     "invite.body": "Naš zajednički put doveo nas je ovamo. S velikom radošću pozivamo vas na naše vjenčanje, kada jedan drugome kažemo „da” u stockholmskoj Gradskoj vijećnici, pod trima zlatnim krunama i uz vode jezera Mälaren. Jedan je od nas odrastao u Serresu u sjevernoj Grčkoj, drugi u Virovitici. Dva kontinentalna grada daleko jedan od drugoga, a ovdje na sjeveru pronašli smo svoj zajednički dom. Bilo bi nam neizmjerno drago proslaviti ovaj dan s vama.",
 
     "invite.caption": "Na putu prema vrhu, zajedno.",
@@ -292,7 +304,7 @@ window.I18N = {
     "ceremony.title": "Građanski obred",
     "ceremony.venue": "Gradska vijećnica u Stockholmu",
     "ceremony.address": "Hantverkargatan 1, Stockholm",
-    "ceremony.note": "Budući da je broj mjesta u Gradskoj vijećnici strogo ograničen, samom obredu nažalost mogu prisustvovati samo najuža rodbina. Ovaj se poziv odnosi na večeru koja slijedi, i ondje vas doista želimo uz sebe!",
+    "ceremony.note": "Budući da je broj mjesta u Gradskoj vijećnici ograničen, obredu unutra moći će prisustvovati samo naša najuža obitelj. No bilo bi nam jako drago da nam se pridružite ispred Gradske vijećnice i proslavite s nama, prije nego što nastavimo slavlje.",
     "ceremony.noteCeremony": "Bila bi nam velika čast da budete uz nas u Gradskoj vijećnici na samom obredu, a zatim i na večeri.",
 
     "dinner.tag": "Slavlje",

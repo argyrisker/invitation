@@ -42,9 +42,13 @@
 
   /* ── per-guest links ───────────────────────────────────────────────────
      ?to=Maria         puts the guest's name in the salutation
-     ?greet=Dear+Maria replaces the whole salutation verbatim, for when Greek
-                       or Croatian grammar needs a different case than the
-                       template can produce
+     ?g=f | m | fp     grammatical form of the salutation, for Greek and
+                       Croatian where "dear" agrees with the guest: f one
+                       woman, m one man, fp several women. Left out, the
+                       plural/mixed form is used. Swedish and English are
+                       the same in every form.
+     ?greet=Dear+Maria replaces the whole salutation verbatim, for anything
+                       the templates cannot produce
      ?inv=ceremony     swaps the seats-are-limited note for the ceremony
                        welcome, for guests invited inside the City Hall
      Everything is written with textContent, so nothing in a URL can inject
@@ -53,6 +57,7 @@
   var GUEST = {
     name:     (QS.get("to")    || "").trim().slice(0, 60),
     greet:    (QS.get("greet") || "").trim().slice(0, 120),
+    gender:   (QS.get("g")     || "").trim().toLowerCase(),
     ceremony: QS.get("inv") === "ceremony"
   };
   if (GUEST.ceremony) {
@@ -63,8 +68,11 @@
   function personalizeGreeting() {
     var el = $('[data-i18n="invite.title"]');
     if (!el) return;
-    if (GUEST.greet)     el.textContent = GUEST.greet;
-    else if (GUEST.name) el.textContent = t("invite.titleTo").replace("{name}", GUEST.name);
+    if (GUEST.greet) { el.textContent = GUEST.greet; return; }
+    if (!GUEST.name) return;
+    var key = { f: "invite.titleToF", m: "invite.titleToM", fp: "invite.titleToFP" }[GUEST.gender]
+              || "invite.titleTo";
+    el.textContent = t(key).replace("{name}", GUEST.name);
   }
 
   /* ── translation ───────────────────────────────────────────────────── */
