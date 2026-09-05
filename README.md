@@ -202,11 +202,11 @@ later, and republishes by itself on every push to that branch. The empty
 > the Pages site, and the API answers `Resource not accessible by integration`.
 > That is why there is no deploy workflow in this repository.
 
-One thing to update after the first deploy: the `og:` tags at the top of
-`index.html` carry the full site URL so that WhatsApp, Messenger and iMessage
-show a picture and a summary when the link is shared. They currently point at
+One thing to update after the first deploy: the `og:url` tag at the top of
+`index.html` carries the full site URL so that WhatsApp, Messenger and iMessage
+show a proper summary when the link is shared. It currently points at
 `https://argyrisker.github.io/invitation/`. If the site ends up somewhere else,
-change those two absolute URLs.
+change that absolute URL.
 
 Any other static host works the same way (Netlify, Vercel, Cloudflare Pages):
 drop the folder in, no build step.
@@ -229,11 +229,6 @@ city emblems above them open their city, each in the language the guest is
 reading, via `Special:Search/<name>` so a link can never land on a missing
 page.
 
-Flags of all three countries sit in the footer, and an illustration of the
-couple (`assets/img/couple.webp`, JPEG fallback) hangs as a taped-up polaroid
-next to the invitation letter. Its caption lives in `i18n.js`
-(`invite.caption`) like all other text.
-
 **The three cities** get their own section: the Bezesteni in Serres,
 Pejačević Castle in Virovitica and the City Hall in Stockholm, drawn as gold
 line art in the same style as the hero. They are drawings, not the municipal
@@ -248,8 +243,7 @@ under the crown of the five historic shields.
 draws itself stroke by stroke and then casts a shimmering reflection in
 Mälaren, faint northern lights drift across the hero sky, gold sparkles float,
 the ampersand breathes (and releases a burst of hearts if a guest taps it),
-the invitation letter arrives word by word, the polaroid develops from a soft
-blur into full colour as it appears, section rules unroll, the photo floats,
+the invitation letter arrives word by word, section rules unroll,
 the countdown numbers pop as they change, cards lift and enter staggered, the
 divider bands trace themselves in and bob, a gold thread tracks scroll
 position, the language switch crossfades, the submit button pulses while

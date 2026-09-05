@@ -21,8 +21,6 @@ window.I18N = {
     "invite.titleToFP": "Kära {name}",
     "invite.body": "Vår gemensamma resa har fört oss hit. Med stor glädje bjuder vi in dig till vårt bröllop, när vi säger ja till varandra i Stockholms stadshus, under de tre gyllene kronorna och vid Mälarens vatten. Den ene av oss växte upp i Serres i norra Grekland, den andre i Virovitica i Slavonien. Två inlandsstäder långt från varandra, och här uppe i norr har vi hittat vårt gemensamma hem. Det skulle betyda allt för oss att få fira den här dagen tillsammans med er.",
 
-    "invite.caption": "På väg uppåt, tillsammans.",
-    "invite.photoAlt": "Illustration av Argyrios och Tomislav i en gondollift; den ene kysser den andres kind",
 
     "ceremony.tag": "Vigsel",
     "ceremony.title": "Borgerlig vigsel",
@@ -113,8 +111,6 @@ window.I18N = {
     "invite.titleToFP": "Αγαπημένες μας {name}",
     "invite.body": "Το κοινό μας ταξίδι μάς έφερε ως εδώ. Με μεγάλη χαρά σας προσκαλούμε στον γάμο μας, καθώς λέμε το «ναι» ο ένας στον άλλον στο Δημαρχείο της Στοκχόλμης, κάτω από τα τρία χρυσά στέμματα και δίπλα στα νερά της λίμνης Μέλαρεν. Ο ένας μας μεγάλωσε στις Σέρρες, ο άλλος στη Βιροβίτιτσα της Σλαβονίας. Δύο πόλεις της ενδοχώρας, μακριά η μία από την άλλη, κι εδώ στον Βορρά βρήκαμε το κοινό μας σπίτι. Θα ήταν μεγάλη μας χαρά να γιορτάσουμε αυτή τη μέρα μαζί σας.",
 
-    "invite.caption": "Στον δρόμο για την κορυφή, μαζί.",
-    "invite.photoAlt": "Σκίτσο του Αργύριου και του Tomislav σε τελεφερίκ· ο ένας φιλά τον άλλον στο μάγουλο",
 
     "ceremony.tag": "Τελετή",
     "ceremony.title": "Πολιτικός γάμος",
@@ -205,8 +201,6 @@ window.I18N = {
     "invite.titleToFP": "Dear {name}",
     "invite.body": "Our journey together has led us here. We are delighted to invite you to our wedding as we say ‘yes’ to each other at Stockholm City Hall, beneath the three golden crowns and beside the waters of Lake Mälaren. One of us grew up in Serres in northern Greece, the other in Virovitica in Slavonia. Two inland towns far apart, and here in the north we have found our shared home. It would mean the world to us to celebrate this day with you.",
 
-    "invite.caption": "On our way up, together.",
-    "invite.photoAlt": "Illustration of Argyrios and Tomislav in a ski gondola; one kissing the other's cheek",
 
     "ceremony.tag": "Ceremony",
     "ceremony.title": "Civil ceremony",
@@ -297,8 +291,6 @@ window.I18N = {
     "invite.titleToFP": "Drage {name}",
     "invite.body": "Naš zajednički put doveo nas je ovamo. S velikom radošću pozivamo vas na naše vjenčanje, kada jedan drugome kažemo „da” u stockholmskoj Gradskoj vijećnici, pod trima zlatnim krunama i uz vode jezera Mälaren. Jedan je od nas odrastao u Serresu u sjevernoj Grčkoj, drugi u Virovitici. Dva kontinentalna grada daleko jedan od drugoga, a ovdje na sjeveru pronašli smo svoj zajednički dom. Bilo bi nam neizmjerno drago proslaviti ovaj dan s vama.",
 
-    "invite.caption": "Na putu prema vrhu, zajedno.",
-    "invite.photoAlt": "Ilustracija Argyriosa i Tomislava u žičari; jedan ljubi drugoga u obraz",
 
     "ceremony.tag": "Obred",
     "ceremony.title": "Građanski obred",

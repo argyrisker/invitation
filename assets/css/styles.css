@@ -137,62 +137,6 @@ a { color: inherit; }
   max-width: 60ch;
 }
 
-/* ── invitation letter + photo ─────────────────────────────────────────── */
-.invite-grid {
-  display: grid;
-  gap: clamp(2.2rem, 5vw, 3.5rem);
-  align-items: center;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 860px) {
-  .invite-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-}
-
-.photo {
-  position: relative;
-  margin: 0 auto;
-  width: min(400px, 88%);
-  padding: 14px 14px 12px;
-  background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 22px 55px rgba(8, 23, 41, .22);
-  transform: rotate(-2.5deg);
-  transition: transform .45s cubic-bezier(.22, 1, .36, 1), box-shadow .45s;
-}
-.photo:hover {
-  transform: rotate(0deg) scale(1.02);
-  box-shadow: 0 30px 70px rgba(8, 23, 41, .28);
-}
-/* gold "washi tape" over the top corners */
-.photo::before, .photo::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  width: 84px;
-  height: 26px;
-  background: linear-gradient(100deg, rgba(201, 164, 76, .5), rgba(224, 198, 132, .42));
-  box-shadow: 0 1px 4px rgba(8, 23, 41, .12);
-}
-.photo::before { left: -26px; transform: rotate(-38deg); }
-.photo::after  { right: -26px; transform: rotate(38deg); }
-/* on a narrow phone the tape plus the float rotation would push the page
-   a few pixels wider than the screen, so shrink it there */
-@media (max-width: 480px) {
-  .photo { --tilt: -1.5deg; transform: rotate(-1.5deg); }
-  .photo::before, .photo::after { width: 58px; height: 20px; top: -9px; }
-  .photo::before { left: -14px; }
-  .photo::after  { right: -14px; }
-}
-.photo img { display: block; width: 100%; height: auto; border-radius: 1px; }
-.photo figcaption {
-  padding: .75rem .2rem .3rem;
-  text-align: center;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.12rem;
-  color: #4a5a70;
-}
-
 /* geometry-only sprite for the braid; never rendered directly */
 .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 
@@ -1031,15 +975,6 @@ a { color: inherit; }
 .lede .w { display: inline-block; opacity: 0; transform: translateY(10px); }
 .is-visible .lede .w { animation: rise .55s ease forwards; }
 
-/* ── the polaroid develops as it scrolls into view ─────────────────────── */
-.section.reveal .photo img {
-  filter: blur(7px) sepia(.45) saturate(.6) brightness(1.05);
-}
-.section.reveal.is-visible .photo img {
-  filter: blur(0) sepia(0) saturate(1) brightness(1);
-  transition: filter 1.8s ease .25s;
-}
-
 /* ── the divider bands trace themselves in ─────────────────────────────── */
 /* stroke-dasharray and -offset inherit, so setting them on the <use>
    elements reaches the pleter's shadow-tree copies too */
@@ -1063,14 +998,6 @@ a { color: inherit; }
          transform: translate(calc(-50% + var(--hx, 0px)), calc(-50% + var(--hy, -60px)))
                     scale(var(--hs, 1)) rotate(var(--hr, 0deg)); }
 }
-
-/* ── the photo breathes, and tilts a little as you scroll past ─────────── */
-@keyframes floaty {
-  0%, 100% { transform: rotate(var(--tilt, -2.5deg)) translateY(0); }
-  50%      { transform: rotate(var(--tilt, -2.5deg)) translateY(-9px); }
-}
-.photo { animation: floaty 7s ease-in-out infinite; }
-.photo:hover { animation-play-state: paused; }
 
 /* ── language switch crossfade ─────────────────────────────────────────── */
 @keyframes langIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -1106,10 +1033,8 @@ a { color: inherit; }
   .petal, .heart, .cityhall-mirror, .hero__band,
   .thread, .thread-tip, .envelope { display: none !important; }
   .lede .w { opacity: 1 !important; transform: none !important; }
-  .reveal .photo img { filter: none !important; }
   .motif.scroll path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
   .reveal, .reveal .card { opacity: 1 !important; transform: none !important; }
-  .photo { transform: none; box-shadow: none; border: 1px solid #ccc; }
   body { background: #fff; color: #000; font-size: 12pt; }
   .hero, .section--dark, .footer {
     background: #fff !important;
@@ -1128,11 +1053,9 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .reveal .card { opacity: 1 !important; transform: none; transition: none; }
-  .photo, .card, .btn--gold::after, .flag, .home img { transition: none; }
-  .photo { transform: rotate(-2.5deg); }
+  .card, .btn--gold::after, .flag, .home img { transition: none; }
   .sparkle, .petal, .heart, .thread, .thread-tip, .envelope { display: none; }
   .lede .w { opacity: 1 !important; transform: none !important; }
-  .reveal .photo img { filter: none !important; transition: none; }
   .section__title::after { transform: scaleX(1) !important; transition: none; }
   * { animation: none !important; }
 }
